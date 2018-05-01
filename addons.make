@@ -1,0 +1,6 @@
+ofxAnimatable
+ofxDSHapVideoPlayer
+ofxMidi
+ofxPostProcessing
+ofxTrueTypeFontUC
+ofxXmlSettings
