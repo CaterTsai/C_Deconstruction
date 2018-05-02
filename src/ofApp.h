@@ -15,8 +15,5 @@ public:
 private:
 	ofEasyCam _cam;
 	DRomanCircle _drc;
-
-	ofImage img;
-	ofTexture tex;
-	ofPlanePrimitive plane;
+	float _mainTimer;
 };

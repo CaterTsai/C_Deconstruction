@@ -24,7 +24,7 @@ public:
 
 	virtual void reset() {};
 
-	virtual void trigger() {};
+	virtual void trigger(int key) {};
 
 	inline bool getStart()
 	{

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "DBase.h"
+#include "ofxAnimatableFloat.h"
 
 class DRomanCircle : public DBase
 {
@@ -9,13 +10,20 @@ private:
 	class circleUnit
 	{
 	public:
-		circleUnit();
+		circleUnit(string texPath, float r, float depth, float size);
+		void update(float delta);
+		void draw();
+		void in(float t);
+		void out(float t);
+		void trigger(float t);
 
 	private:
 		ofMesh _mesh;
 		ofImage _tex;
+		ofxAnimatableFloat _animAlpha;
+		float _rotateD;
+		float _rotateV;
 
-		
 	};
 #pragma endregion
 
@@ -25,11 +33,7 @@ public:
 	DRomanCircle()
 		:DBase(eDRomanCircle)
 	{
-		ofDisableArbTex();
-		_img.loadImage("pattern_5.png");
-
-		_tex = _img.getTextureReference();
-		_tex.setTextureWrap(GL_REPEAT, GL_REPEAT);
+		ofDisableArbTex();	
 	}
 
 	void update(float delta) override;
@@ -38,12 +42,10 @@ public:
 	void start() override;
 	void stop() override;
 
-	void trigger() override;
+	void trigger(int key) override;
 private:
-	void generate();
+	void initMesh();
 
 private:
-	ofMesh _mesh;
-	ofImage _img;
-	ofTexture _tex;
+	vector<circleUnit> _circleList;
 };
