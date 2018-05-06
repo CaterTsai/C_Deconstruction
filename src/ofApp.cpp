@@ -4,7 +4,8 @@
 void ofApp::setup() {
 	ofBackground(0);
 
-	_drc.start();
+	//_drc.start();
+	_dsg.start();
 	_mainTimer = ofGetElapsedTimef();
 }
 
@@ -13,14 +14,18 @@ void ofApp::update() {
 	float delta = ofGetElapsedTimef() - _mainTimer;
 	_mainTimer += delta;
 
-	_drc.update(delta);
+	//_drc.update(delta);
+	_dsg.update(delta);
+
+	ofSetWindowTitle(ofToString(ofGetFrameRate()));
 }
 
 //--------------------------------------------------------------
 void ofApp::draw() {
-	_cam.begin();
-	_drc.draw();
-	_cam.end();
+	//_cam.begin();
+	//_drc.draw();
+	//_cam.end();
+	_dsg.draw();
 
 }
 
@@ -39,7 +44,7 @@ void ofApp::keyPressed(int key) {
 	case '8':
 	case '9':
 	{
-		_drc.trigger(key - '0');
+		//_drc.trigger(key - '0');
 		break;
 	}
 	}

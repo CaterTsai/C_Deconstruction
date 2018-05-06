@@ -95,7 +95,7 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxAnimatable\src;..\..\..\addons\ofxDSHapVideoPlayer\libs;..\..\..\addons\ofxDSHapVideoPlayer\libs\External;..\..\..\addons\ofxDSHapVideoPlayer\libs\External\DirectShow;..\..\..\addons\ofxDSHapVideoPlayer\libs\External\DirectShow\BaseClasses;..\..\..\addons\ofxDSHapVideoPlayer\libs\External\snappy;..\..\..\addons\ofxDSHapVideoPlayer\src;..\..\..\addons\ofxMidi\libs;..\..\..\addons\ofxMidi\libs\pgmidi;..\..\..\addons\ofxMidi\libs\rtmidi;..\..\..\addons\ofxMidi\src;..\..\..\addons\ofxMidi\src\desktop;..\..\..\addons\ofxMidi\src\ios;..\..\..\addons\ofxPostProcessing\src;..\..\..\addons\ofxTrueTypeFontUC\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src;.\src\drawer\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxAnimatable\src;..\..\..\addons\ofxDSHapVideoPlayer\libs;..\..\..\addons\ofxDSHapVideoPlayer\libs\External;..\..\..\addons\ofxDSHapVideoPlayer\libs\External\DirectShow;..\..\..\addons\ofxDSHapVideoPlayer\libs\External\DirectShow\BaseClasses;..\..\..\addons\ofxDSHapVideoPlayer\libs\External\snappy;..\..\..\addons\ofxDSHapVideoPlayer\src;..\..\..\addons\ofxMidi\libs;..\..\..\addons\ofxMidi\libs\pgmidi;..\..\..\addons\ofxMidi\libs\rtmidi;..\..\..\addons\ofxMidi\src;..\..\..\addons\ofxMidi\src\desktop;..\..\..\addons\ofxMidi\src\ios;..\..\..\addons\ofxPostProcessing\src;..\..\..\addons\ofxTrueTypeFontUC\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src;.\src\drawer\;.\src\shaderVoronoi\</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
     </ClCompile>
     <Link>
@@ -133,7 +133,7 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxAnimatable\src;..\..\..\addons\ofxDSHapVideoPlayer\libs;..\..\..\addons\ofxDSHapVideoPlayer\libs\External;..\..\..\addons\ofxDSHapVideoPlayer\libs\External\DirectShow;..\..\..\addons\ofxDSHapVideoPlayer\libs\External\DirectShow\BaseClasses;..\..\..\addons\ofxDSHapVideoPlayer\libs\External\snappy;..\..\..\addons\ofxDSHapVideoPlayer\src;..\..\..\addons\ofxMidi\libs;..\..\..\addons\ofxMidi\libs\pgmidi;..\..\..\addons\ofxMidi\libs\rtmidi;..\..\..\addons\ofxMidi\src;..\..\..\addons\ofxMidi\src\desktop;..\..\..\addons\ofxMidi\src\ios;..\..\..\addons\ofxPostProcessing\src;..\..\..\addons\ofxTrueTypeFontUC\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src;.\src\drawer\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxAnimatable\src;..\..\..\addons\ofxDSHapVideoPlayer\libs;..\..\..\addons\ofxDSHapVideoPlayer\libs\External;..\..\..\addons\ofxDSHapVideoPlayer\libs\External\DirectShow;..\..\..\addons\ofxDSHapVideoPlayer\libs\External\DirectShow\BaseClasses;..\..\..\addons\ofxDSHapVideoPlayer\libs\External\snappy;..\..\..\addons\ofxDSHapVideoPlayer\src;..\..\..\addons\ofxMidi\libs;..\..\..\addons\ofxMidi\libs\pgmidi;..\..\..\addons\ofxMidi\libs\rtmidi;..\..\..\addons\ofxMidi\src;..\..\..\addons\ofxMidi\src\desktop;..\..\..\addons\ofxMidi\src\ios;..\..\..\addons\ofxPostProcessing\src;..\..\..\addons\ofxTrueTypeFontUC\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src;.\src\drawer\;.\src\shaderVoronoi\</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
@@ -172,6 +172,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\drawer\DRomanCircle.cpp" />
+    <ClCompile Include="src\drawer\DStainedGlass.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
     <ClCompile Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatable.cpp" />
@@ -254,6 +255,7 @@
     <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxml.cpp" />
     <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxmlerror.cpp" />
     <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxmlparser.cpp" />
+    <ClCompile Include="src\shaderVoronoi\shaderVoronoi.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\constParameter.h" />
@@ -261,6 +263,7 @@
     <ClInclude Include="src\drawer\drawer.h" />
     <ClInclude Include="src\drawer\drawParameter.h" />
     <ClInclude Include="src\drawer\DRomanCircle.h" />
+    <ClInclude Include="src\drawer\DStainedGlass.h" />
     <ClInclude Include="src\drawer\DType.h" />
     <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatable.h" />
@@ -355,6 +358,7 @@
     <ClInclude Include="..\..\..\addons\ofxTrueTypeFontUC\src\ofxTrueTypeFontUC.h" />
     <ClInclude Include="..\..\..\addons\ofxXmlSettings\src\ofxXmlSettings.h" />
     <ClInclude Include="..\..\..\addons\ofxXmlSettings\libs\tinyxml.h" />
+    <ClInclude Include="src\shaderVoronoi\shaderVoronoi.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="$(OF_ROOT)\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">

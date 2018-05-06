@@ -40,7 +40,7 @@ DRomanCircle::circleUnit::circleUnit(string texPath, float r, float depth, float
 		//Others
 		_tex.getTextureReference().setTextureWrap(GL_REPEAT, GL_REPEAT);
 		_animAlpha.reset(0);
-		_rotateV = (rand() % 2 == 0?-1:1) * ofRandom(5, 10);
+		_rotateV = (rand() % 2 == 0?-1:1) * ofRandom(2, 15);
 
 	}
 }
@@ -173,11 +173,34 @@ void DRomanCircle::trigger(int key)
 void DRomanCircle::initMesh()
 {
 	_circleList.clear();
-	float r = 150;
-	float d = 20;
-	for (int i = 0; i < 5; i++)
-	{
-		circleUnit newCircle(("pattern_" + ofToString(i + 1) + ".png"), r + d * i, d, rand() % 30 + 10);
-		_circleList.push_back(newCircle);
-	}
+	float r = 200;
+
+	circleUnit newCircle1(("pattern/pattern_6.png"), r, 40, rand() % 25 + 15);
+	r += 40;
+
+	circleUnit newCircle2(("pattern/pattern_2.png"), r, 30, rand() % 30 + 15);
+	r += 30;
+
+	circleUnit newCircle3(("pattern/pattern_1.png"), r, 40, rand() % 30 + 20);
+	r += 40;
+
+	circleUnit newCircle4(("pattern/pattern_7.png"), r, 25, rand() % 20 + 20);
+	r += 25;
+
+	circleUnit newCircle5(("pattern/pattern/pattern_5.png"), r, 40, rand() % 30 + 30);
+	r += 40;
+
+	circleUnit newCircle6(("pattern/pattern_4.png"), r, 45, rand() % 30 + 30);
+	r += 45;
+
+	circleUnit newCircle7(("pattern/pattern_3.png"), r, 30, rand() % 30 + 35);
+	r += 30;
+
+	_circleList.push_back(newCircle1);
+	_circleList.push_back(newCircle2);
+	_circleList.push_back(newCircle3);
+	_circleList.push_back(newCircle4);
+	_circleList.push_back(newCircle5);
+	_circleList.push_back(newCircle6);
+	_circleList.push_back(newCircle7);
 }

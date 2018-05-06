@@ -250,6 +250,12 @@
     <ClCompile Include="src\drawer\DRomanCircle.cpp">
       <Filter>src\drawer\DElement</Filter>
     </ClCompile>
+    <ClCompile Include="src\drawer\DStainedGlass.cpp">
+      <Filter>src\drawer\DElement</Filter>
+    </ClCompile>
+    <ClCompile Include="src\shaderVoronoi\shaderVoronoi.cpp">
+      <Filter>src\shaderVoronoi</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -329,6 +335,9 @@
     </Filter>
     <Filter Include="src\drawer\DElement">
       <UniqueIdentifier>{e148f0e1-c7cc-4325-a1fe-bcb6e1f961a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\shaderVoronoi">
+      <UniqueIdentifier>{9d84b6a6-adbb-4e3e-9412-053cefbae317}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -628,6 +637,12 @@
     </ClInclude>
     <ClInclude Include="src\drawer\DRomanCircle.h">
       <Filter>src\drawer\DElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\drawer\DStainedGlass.h">
+      <Filter>src\drawer\DElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\shaderVoronoi\shaderVoronoi.h">
+      <Filter>src\shaderVoronoi</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

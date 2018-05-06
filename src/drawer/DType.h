@@ -2,8 +2,8 @@
 
 enum eDType
 {
-	eDRomanCircle = 0
-
+	eDRomanCircle = 0,
+	eDStainedGlass
 	//Not Yet
 	, eDTypeNum
 };

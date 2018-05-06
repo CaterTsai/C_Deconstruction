@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
-#include "DRomanCircle.h"
+#include "drawer.h"
 
 class ofApp : public ofBaseApp {
 
@@ -14,6 +14,7 @@ public:
 
 private:
 	ofEasyCam _cam;
-	DRomanCircle _drc;
+	//DRomanCircle _drc;
+	DStainedGlass _dsg;
 	float _mainTimer;
 };
