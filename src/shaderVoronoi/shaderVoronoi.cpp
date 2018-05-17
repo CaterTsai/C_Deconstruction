@@ -84,7 +84,7 @@ void shaderVoronoi::update()
 		return;
 	}
 
-	if(_isUpdate)
+	if(_isAlwaysUpdate || _isUpdate)
 	{
 		resetSeedData();
 
@@ -190,7 +190,7 @@ void shaderVoronoi::resetSeedData()
 	ZeroMemory(_seedInitial, sizeof(float ) * _width * _height *  3);
 	for(auto& Iter_ : _seedList)
 	{
-		int index_ = (Iter_.x + Iter_.y * _width) * 3;
+		int index_ = ((int)Iter_.x + (int)Iter_.y * _width) * 3;
 		_seedInitial[index_] = Iter_.x;
 		_seedInitial[index_ + 1] = Iter_.y;
 		_seedInitial[index_ + 2] = 1;
@@ -211,7 +211,7 @@ void shaderVoronoi::drawSeed()
 		ofFill();
 		for(auto& Iter_ : _seedList)
 		{
-			ofCircle(Iter_, 3);
+			ofCircle(Iter_, 1);
 		}
 	}
 	ofPopStyle();

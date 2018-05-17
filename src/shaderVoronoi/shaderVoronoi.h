@@ -30,8 +30,9 @@ private:
 public:
 	shaderVoronoi()
 		:_isSetup(false)
-		,_isUpdate(false)
-		,_isDisplaySeed(false)
+		, _isUpdate(false)
+		, _isAlwaysUpdate(true)
+		, _isDisplaySeed(false)
 	{}
 
 	void setup(int w, int h);
@@ -50,10 +51,14 @@ private:
 private:
 	void drawSeed();
 
-private:
-	bool	_isSetup, _isUpdate, _isDisplaySeed;
-	ofFbo		_result, _posArray;
+public:
 	vector<ofVec2f>	_seedList;
+
+private:
+	bool _isSetup, _isDisplaySeed;
+	bool _isUpdate, _isAlwaysUpdate;
+	ofFbo _result, _posArray;
+
 
 	PingPongFbo _pingPong;
 	ofShader _drawColor, _seedCheck;

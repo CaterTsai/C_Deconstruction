@@ -256,6 +256,12 @@
     <ClCompile Include="src\shaderVoronoi\shaderVoronoi.cpp">
       <Filter>src\shaderVoronoi</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxLayerMask\src\ofxLayerMask.cpp">
+      <Filter>addons\ofxLayerMask\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\postFilter.cpp">
+      <Filter>src\singleton\postFilter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -338,6 +344,18 @@
     </Filter>
     <Filter Include="src\shaderVoronoi">
       <UniqueIdentifier>{9d84b6a6-adbb-4e3e-9412-053cefbae317}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxLayerMask">
+      <UniqueIdentifier>{1173034c-2e18-419b-bf22-d4bbe333dae6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxLayerMask\src">
+      <UniqueIdentifier>{373c06a1-5dcd-40a6-a06d-91857e3ae32d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\singleton">
+      <UniqueIdentifier>{a0f30966-f3a2-4673-a966-6e34c7d11db7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\singleton\postFilter">
+      <UniqueIdentifier>{794523e3-3afd-42fe-aae4-b32820ccd30f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -643,6 +661,12 @@
     </ClInclude>
     <ClInclude Include="src\shaderVoronoi\shaderVoronoi.h">
       <Filter>src\shaderVoronoi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxLayerMask\src\ofxLayerMask.h">
+      <Filter>addons\ofxLayerMask\src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\postFilter.h">
+      <Filter>src\singleton\postFilter</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

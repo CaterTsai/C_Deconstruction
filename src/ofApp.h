@@ -2,6 +2,8 @@
 
 #include "ofMain.h"
 #include "drawer.h"
+#include "ofxPostProcessing.h"
+#include "postFilter.h"
 
 class ofApp : public ofBaseApp {
 
@@ -16,5 +18,7 @@ private:
 	ofEasyCam _cam;
 	//DRomanCircle _drc;
 	DStainedGlass _dsg;
+
+	ofxPostProcessing _post;
 	float _mainTimer;
 };
