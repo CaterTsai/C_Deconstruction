@@ -17,7 +17,8 @@ public:
 private:
 	ofEasyCam _cam;
 	//DRomanCircle _drc;
-	DStainedGlass _dsg;
+	//DStainedGlass _dsg;
+	DEgyptianVertical _dev;
 
 	ofxPostProcessing _post;
 	float _mainTimer;

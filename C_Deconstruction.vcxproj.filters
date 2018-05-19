@@ -262,6 +262,9 @@
     <ClCompile Include="src\postFilter.cpp">
       <Filter>src\singleton\postFilter</Filter>
     </ClCompile>
+    <ClCompile Include="src\drawer\DEgyptianVertical.cpp">
+      <Filter>src\drawer\DElement</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -667,6 +670,9 @@
     </ClInclude>
     <ClInclude Include="src\postFilter.h">
       <Filter>src\singleton\postFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="src\drawer\DEgyptianVertical.h">
+      <Filter>src\drawer\DElement</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

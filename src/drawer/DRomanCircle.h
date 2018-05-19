@@ -2,6 +2,7 @@
 
 #include "DBase.h"
 #include "ofxAnimatableFloat.h"
+#include "ofxLayerMask.h"
 
 class DRomanCircle : public DBase
 {

@@ -1,7 +1,18 @@
 #pragma once
 
-#include "ofMain.h"
+#include "../constParameter.h"
 
 const int cVoronoiSeedNum = 200;
 const int cVoronoiWidth = 512;
 const int cVoronoiHeight = 512;
+
+const int cEgyptianFontSize = 120;
+const int cEgyptianUnicodePrecode = 55308;
+const int cEgyptianUnicodeMin = 56321;
+const int cEgyptianUnicodeMax = 57311;
+
+const int cEgyptianVerticalHeight = cWindowHeight;
+const int cEgyptianVerticalUnitHeight = cEgyptianFontSize * 0.8f;
+const int cEgyptianVerticalUnitWidth = cEgyptianVerticalUnitHeight * 1.2;
+const int cEgyptianVerticalTextNum = 11;// static_cast<int>(cWindowHeight / (float)cEgyptianVerticalUnitHeight);
+
