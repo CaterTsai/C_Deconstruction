@@ -16,3 +16,5 @@ const int cEgyptianVerticalUnitHeight = cEgyptianFontSize * 0.8f;
 const int cEgyptianVerticalUnitWidth = cEgyptianVerticalUnitHeight * 1.2;
 const int cEgyptianVerticalTextNum = 11;// static_cast<int>(cWindowHeight / (float)cEgyptianVerticalUnitHeight);
 
+const int cFieldRows = 20;
+const int cFieldCols = 50;

@@ -172,6 +172,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\addons\ofxLayerMask\src\ofxLayerMask.cpp" />
+    <ClCompile Include="src\drawer\DBreeze.cpp" />
     <ClCompile Include="src\drawer\DEgyptianVertical.cpp" />
     <ClCompile Include="src\drawer\DRomanCircle.cpp" />
     <ClCompile Include="src\drawer\DStainedGlass.cpp" />
@@ -264,6 +265,7 @@
     <ClInclude Include="..\..\..\addons\ofxLayerMask\src\ofxLayerMask.h" />
     <ClInclude Include="src\constParameter.h" />
     <ClInclude Include="src\drawer\DBase.h" />
+    <ClInclude Include="src\drawer\DBreeze.h" />
     <ClInclude Include="src\drawer\DEgyptianVertical.h" />
     <ClInclude Include="src\drawer\drawer.h" />
     <ClInclude Include="src\drawer\drawParameter.h" />

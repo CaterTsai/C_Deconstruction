@@ -265,6 +265,9 @@
     <ClCompile Include="src\drawer\DEgyptianVertical.cpp">
       <Filter>src\drawer\DElement</Filter>
     </ClCompile>
+    <ClCompile Include="src\drawer\DBreeze.cpp">
+      <Filter>src\drawer\DElement</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -672,6 +675,9 @@
       <Filter>src\singleton\postFilter</Filter>
     </ClInclude>
     <ClInclude Include="src\drawer\DEgyptianVertical.h">
+      <Filter>src\drawer\DElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\drawer\DBreeze.h">
       <Filter>src\drawer\DElement</Filter>
     </ClInclude>
   </ItemGroup>

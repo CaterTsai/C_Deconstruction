@@ -18,8 +18,8 @@ private:
 	ofEasyCam _cam;
 	//DRomanCircle _drc;
 	//DStainedGlass _dsg;
-	DEgyptianVertical _dev;
-
+	//DEgyptianVertical _dev;
+	DBreeze _dbr;
 	ofxPostProcessing _post;
 	float _mainTimer;
 };
