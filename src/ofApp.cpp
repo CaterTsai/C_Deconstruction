@@ -65,6 +65,7 @@ void ofApp::keyPressed(int key) {
 	case ' ':
 	{
 		//_dsg.startRotate(5.0f);
+		_dbr.trigger(key);
 		break;
 	}
 	}

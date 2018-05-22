@@ -18,3 +18,6 @@ const int cEgyptianVerticalTextNum = 11;// static_cast<int>(cWindowHeight / (flo
 
 const int cFieldRows = 20;
 const int cFieldCols = 50;
+const ofRectangle cBreezRange = ofRectangle(0, 0, cWindowWidth, cWindowHeight);
+const float cBreezParticalSpeedMin = 100.0;
+const float cBreezParticalSpeedMax = 500.0;
