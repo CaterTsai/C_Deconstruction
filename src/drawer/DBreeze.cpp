@@ -23,6 +23,19 @@ void DBreeze::partical::update(float delta, ofVec2f desired)
 	_vec += steer * delta;
 	_pos += _vec * delta;
 
+	//Rotate
+	_degree += _rotateV * delta;
+	if (_degree > 360)
+	{
+		_degree -= 360;
+	}
+
+	if (_degree < 0)
+	{
+		_degree += 360;
+	}
+
+	//Move
 	if (_pos.x > cBreezRange.getMaxX())
 	{
 		_pos.x -= cBreezRange.getMaxX();
@@ -68,11 +81,11 @@ void DBreeze::draw()
 
 	ofPushStyle();
 	ofNoFill();
-	
+
 	for (auto& iter : _pList)
 	{
 		ofSetColor(255, iter._life / iter._lifeLength * 255.0f);
-		ofDrawCircle(iter._pos, 5);
+		drawPartical(iter);
 	}
 	ofPopStyle();
 }
@@ -97,7 +110,7 @@ void DBreeze::trigger(int key)
 	{
 		emitter();
 	}
-	
+
 }
 
 //--------------------------------------
@@ -163,16 +176,74 @@ void DBreeze::checkPartical()
 }
 
 //--------------------------------------
-void DBreeze::emitter()
+void DBreeze::drawPartical(partical& p)
+{
+	ofPushMatrix();
+	ofTranslate(p._pos);
+	ofRotate(p._degree, p._axis.x, p._axis.y, p._axis.z);
+	switch (p._type)
+	{
+	case ePType::ePCircle:
+	{
+		ofDrawCircle(0, 0, p._size);
+		break;
+	}
+	case ePType::ePTriangle:
+	{
+		ofVec2f p1, p2, p3;
+		p1.set(p._size);
+		p2 = p1.rotated(120);
+		p3 = p3.rotated(120);
+		ofDrawTriangle(p1, p2, p3);
+		break;
+	}
+	case ePType::ePRect:
+	{
+		ofDrawRectangle(p._size * -0.5, p._size * -0.5, p._size, p._size);
+		break;
+	}
+	case ePType::ePBox:
+	{
+		ofDrawBox(p._size);
+		break;
+	}
+	case ePType::ePSphere:
+	{
+		ofDrawSphere(0, 0, p._size);
+		break;
+	}
+	case ePType::ePCone:
+	{
+		ofDrawCone(0, 0, p._size, p._size);
+		break;
+	}
+	case ePType::ePCylinder:
+	{
+		ofDrawCylinder(0, 0, p._size, p._size);
+		break;
+	}
+	}
+
+	ofPopMatrix();
+}
+
+//--------------------------------------
+void DBreeze::emitter(ePType type)
 {
 	partical newP;
 	float theta = ofRandom(-PI / 4.0f, PI / 4.0f);
 	ofVec2f pos(cBreezRange.getMinX(), ofRandom(cBreezRange.getMinY(), cBreezRange.getMaxY()));
 	ofVec2f vec(cos(theta), sin(theta));
 	ofVec2f acc(0);
-	float lifeT = ofRandom(10, 20);
+	
+	if (type == ePType::ePTypeRandom)
+	{
+		type = (ePType)(rand() % ePType::ePTypeNum);
+	}
+
+	float lifeT = ofRandom(5, 15);
 	vec *= ofRandom(cBreezParticalSpeedMin, cBreezParticalSpeedMax);
-	newP.set(pos, vec, acc, lifeT);
+	newP.set(type, pos, vec, acc, lifeT);
 
 	_pList.push_back(newP);
 }
