@@ -8,8 +8,13 @@ class DBreeze : public DBase
 
 #pragma region partical
 public:
-	enum ePType {
-
+	enum ePType :int{
+		ePCircle = 0
+		,ePBox
+		,ePSphere
+		,ePCone
+		,ePCylinder
+		,eUnknow
 	};
 private:
 	class partical {
@@ -17,14 +22,16 @@ private:
 		partical()
 			:_pos(0.0f)
 			,_vec(0.0f)
+			,_type(eUnknow)
 		{}
 
-		void set(ofVec2f p, ofVec2f v, ofVec2f a, float t);
+		void set(ePType type, ofVec2f p, ofVec2f v, ofVec2f a, float t);
 		void update(float delta, ofVec2f desired);
 
 	public:
+		ePType _type;
 		ofVec2f _pos, _vec;
-		float _life;
+		float _life, _lifeLength;
 	};
 #pragma endregion
 
@@ -48,6 +55,7 @@ private:
 	void displayFlow(int x, int y, int w, int h);
 	ofVec2f getFlow(ofVec2f pos);
 
+	void checkPartical();
 	void emitter();
 
 private:

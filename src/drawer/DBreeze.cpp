@@ -2,11 +2,12 @@
 
 #pragma region partical
 //--------------------------------------
-void DBreeze::partical::set(ofVec2f p, ofVec2f v, ofVec2f a, float t)
+void DBreeze::partical::set(ePType type, ofVec2f p, ofVec2f v, ofVec2f a, float t)
 {
+	_type = type;
 	_pos.set(p);
 	_vec.set(v);
-	_life = t;
+	_lifeLength = _life = t;
 }
 
 //--------------------------------------
@@ -39,7 +40,7 @@ void DBreeze::partical::update(float delta, ofVec2f desired)
 	{
 		_pos.y += cBreezRange.getHeight();
 	}
-	//_life -= delta;
+	_life -= delta;
 }
 #pragma endregion
 
@@ -53,6 +54,8 @@ void DBreeze::update(float delta)
 	{
 		iter.update(delta, getFlow(iter._pos));
 	}
+
+	checkPartical();
 }
 
 //--------------------------------------
@@ -65,9 +68,10 @@ void DBreeze::draw()
 
 	ofPushStyle();
 	ofNoFill();
-	ofSetColor(255);
+	
 	for (auto& iter : _pList)
 	{
+		ofSetColor(255, iter._life / iter._lifeLength * 255.0f);
 		ofDrawCircle(iter._pos, 5);
 	}
 	ofPopStyle();
@@ -150,6 +154,15 @@ ofVec2f DBreeze::getFlow(ofVec2f pos)
 }
 
 //--------------------------------------
+void DBreeze::checkPartical()
+{
+	_pList.remove_if([](const partical & p)
+	{
+		return p._life < 0.0f;
+	});
+}
+
+//--------------------------------------
 void DBreeze::emitter()
 {
 	partical newP;
@@ -157,8 +170,9 @@ void DBreeze::emitter()
 	ofVec2f pos(cBreezRange.getMinX(), ofRandom(cBreezRange.getMinY(), cBreezRange.getMaxY()));
 	ofVec2f vec(cos(theta), sin(theta));
 	ofVec2f acc(0);
+	float lifeT = ofRandom(10, 20);
 	vec *= ofRandom(cBreezParticalSpeedMin, cBreezParticalSpeedMax);
-	newP.set(pos, vec, acc, 10.0f);
+	newP.set(pos, vec, acc, lifeT);
 
 	_pList.push_back(newP);
 }
