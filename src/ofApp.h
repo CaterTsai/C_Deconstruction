@@ -19,7 +19,8 @@ private:
 	//DRomanCircle _drc;
 	//DStainedGlass _dsg;
 	//DEgyptianVertical _dev;
-	DBreeze _dbr;
+	//DBreeze _dbr;
+	DTemple _dtp;
 	ofxPostProcessing _post;
 	float _mainTimer;
 };

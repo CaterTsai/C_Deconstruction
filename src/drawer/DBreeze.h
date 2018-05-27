@@ -1,7 +1,6 @@
 #pragma once
 
 #include "DBase.h"
-#include "ofxAnimatableFloat.h"
 
 class DBreeze : public DBase
 {

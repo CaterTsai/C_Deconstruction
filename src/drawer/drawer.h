@@ -4,3 +4,4 @@
 #include "DStainedGlass.h"
 #include "DEgyptianVertical.h"
 #include "DBreeze.h"
+#include "DTemple.h"

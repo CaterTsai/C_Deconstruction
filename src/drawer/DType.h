@@ -5,7 +5,10 @@ enum eDType
 	eDRomanCircle = 0,
 	eDStainedGlass,
 	eDEgyptianVertical,
-	eDBreeze
-	//Not Yet
-	, eDTypeNum
+	eDBreeze,
+	eDInstagram,
+	eDCloud,
+	eDTemple,
+
+	eDTypeNum
 };

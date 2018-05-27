@@ -10,8 +10,10 @@ void ofApp::setup() {
 	//_drc.start();
 	//_dsg.start();
 	//_dev.start();
-	_dbr.start();
+	//_dbr.start();
+	_dtp.start();
 
+	_cam.setVFlip(true);
 	_mainTimer = ofGetElapsedTimef();
 }
 
@@ -23,18 +25,21 @@ void ofApp::update() {
 	//_drc.update(delta);
 	//_dsg.update(delta);
 	//_dev.update(delta);
-	_dbr.update(delta);
+	//_dbr.update(delta);
+	_dtp.update(delta);
 
 	ofSetWindowTitle(ofToString(ofGetFrameRate()));
 }
 
 //--------------------------------------------------------------
 void ofApp::draw() {
-	//_cam.begin();
+	_cam.begin();
 	//_drc.draw();
-	//_cam.end();
+	_dtp.draw();
+	_cam.end();
 	//_dev.draw();
-	_dbr.draw();
+	//_dbr.draw();
+	
 	//_post.begin(_cam);
 	//_dsg.draw();
 	//_post.end();
@@ -65,7 +70,7 @@ void ofApp::keyPressed(int key) {
 	case ' ':
 	{
 		//_dsg.startRotate(5.0f);
-		_dbr.trigger(key);
+		//_dbr.trigger(key);
 		break;
 	}
 	}
