@@ -2,22 +2,33 @@
 
 #include "DBase.h"
 #include "ofxAssimpModelLoader.h"
+#include "ofxAnimatableOfColor.h"
+#include "ofxAnimatableOfPoint.h"
 
 class DTemple : public DBase
 {
 private:
-	class pillarUnit {
+	class lightUnit {
 	public:
-		pillarUnit(ofVec3f pos, bool isLeft)
-			:_pos(pos)
-			,_alpha(255.0)
-		{
-		}
-
+		lightUnit():
+			_isOn(false)
+			, _isChangeHue(false)
+		{};
 		void update(float delta);
+
+		void lightTo(float t, ofColor target);
+
+		void lightOff(float t);
+		void toggle(float t, ofColor target);
+
+		void startMove(float t, ofVec3f start, ofVec3f end);
+		void stopMove();
+
 	public:
-		float _alpha;
-		ofVec3f _pos;
+		bool _isOn, _isChangeHue;
+		ofLight _light;
+		ofxAnimatableOfColor _animColor;
+		ofxAnimatableOfPoint _animMove;
 
 	};
 
@@ -26,7 +37,6 @@ public:
 		:DBase(eDTemple)
 	{
 		loadPillar();
-
 	}
 
 	void update(float delta) override;
@@ -41,8 +51,10 @@ private:
 	void loadPillar();
 	void initLight();
 private:
-	ofPoint _lightV;
-	ofLight _light;
-	vector<pillarUnit> _pillarMgr;
+	//ofPoint _lightV;
+	//ofLight _light;
+	
+	array<lightUnit, cTemplePillarRowNum> _lightMgr;
+	vector<ofVec3f> _pillarMgr;
 	ofxAssimpModelLoader _pillar;
 };

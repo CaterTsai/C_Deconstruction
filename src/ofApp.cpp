@@ -63,7 +63,7 @@ void ofApp::keyPressed(int key) {
 	{
 		//_drc.trigger(key - '0');
 		//_dev.trigger(key - '0');
-
+		_dtp.trigger(key - '0');
 		break;
 	}
 
@@ -71,6 +71,7 @@ void ofApp::keyPressed(int key) {
 	{
 		//_dsg.startRotate(5.0f);
 		//_dbr.trigger(key);
+		_dtp.trigger(key);
 		break;
 	}
 	}
