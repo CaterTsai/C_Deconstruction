@@ -5,3 +5,4 @@
 #include "DEgyptianVertical.h"
 #include "DBreeze.h"
 #include "DTemple.h"
+#include "DPortrait.h"

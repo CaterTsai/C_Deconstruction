@@ -26,3 +26,9 @@ const float cBreezParticalSizeMax = 20.0f;
 
 const int cTemplePillarRowNum = 8;
 
+const int cPortraitUnitSize = 2000;
+const int cPortraitMaskSize = 200;
+const int cPortraitPhotoSize = 1000;
+const int cPortraitMaskToPhoto = 5;
+const int cPortraitMaskThreshold = 50;
+

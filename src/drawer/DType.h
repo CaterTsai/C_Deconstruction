@@ -9,6 +9,7 @@ enum eDType
 	eDInstagram,
 	eDCloud,
 	eDTemple,
+	eDPortrait,
 
 	eDTypeNum
 };
