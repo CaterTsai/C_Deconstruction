@@ -3,9 +3,10 @@
 //--------------------------------------------------------------
 void ofApp::setup() {
 	ofBackground(0);
-	//_post.init(1024, 1024);
-	//_post.createPass<BloomPass>()->setEnabled(true);
-
+	_post.init(1024, 1024);
+	_post.createPass<BloomPass>()->setEnabled(true);
+	_post.createPass<BloomPass>()->setEnabled(true);
+	_post.setFlip(false);
 	
 	//_drc.start();
 	//_dsg.start();
@@ -13,7 +14,7 @@ void ofApp::setup() {
 	//_dbr.start();
 	//_dtp.start();
 	_dpt.start();
-	_cam.setVFlip(true);
+	//_cam.setVFlip(true);
 	_mainTimer = ofGetElapsedTimef();
 }
 
@@ -41,10 +42,13 @@ void ofApp::draw() {
 
 	//_dev.draw();
 	//_dbr.draw();
-	_dpt.draw();
-	//_post.begin(_cam);
+	
+
+	_post.begin();
 	//_dsg.draw();
-	//_post.end();
+	_dpt.draw();	
+	_post.end();
+	_dpt.drawPhoto();
 
 }
 
@@ -66,6 +70,7 @@ void ofApp::keyPressed(int key) {
 		//_drc.trigger(key - '0');
 		//_dev.trigger(key - '0');
 		//_dtp.trigger(key - '0');
+		_dpt.trigger(key - '0');
 		break;
 	}
 
@@ -74,6 +79,7 @@ void ofApp::keyPressed(int key) {
 		//_dsg.startRotate(5.0f);
 		//_dbr.trigger(key);
 		//_dtp.trigger(key);
+		_dpt.trigger(key);
 		break;
 	}
 	}
