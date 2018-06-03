@@ -286,6 +286,9 @@
     <ClCompile Include="src\drawer\DPortrait.cpp">
       <Filter>src\drawer\DElement</Filter>
     </ClCompile>
+    <ClCompile Include="src\drawer\DClouds.cpp">
+      <Filter>src\drawer\DElement</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -834,6 +837,9 @@
       <Filter>src\drawer\DElement</Filter>
     </ClInclude>
     <ClInclude Include="src\drawer\DPortrait.h">
+      <Filter>src\drawer\DElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\drawer\DClouds.h">
       <Filter>src\drawer\DElement</Filter>
     </ClInclude>
   </ItemGroup>

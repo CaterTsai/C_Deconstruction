@@ -24,6 +24,8 @@ const float cBreezParticalSpeedMax = 500.0f;
 const float cBreezParticalSizeMin = 5.0f;
 const float cBreezParticalSizeMax = 20.0f;
 
+const int cCloudImgNum = 5;
+
 const int cTemplePillarRowNum = 8;
 
 const int cPortraitUnitSize = 1000;

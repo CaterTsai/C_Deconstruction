@@ -177,6 +177,7 @@
     <ClCompile Include="..\..\..\addons\ofxAssimpModelLoader\src\ofxAssimpTexture.cpp" />
     <ClCompile Include="..\..\..\addons\ofxLayerMask\src\ofxLayerMask.cpp" />
     <ClCompile Include="src\drawer\DBreeze.cpp" />
+    <ClCompile Include="src\drawer\DClouds.cpp" />
     <ClCompile Include="src\drawer\DEgyptianVertical.cpp" />
     <ClCompile Include="src\drawer\DPortrait.cpp" />
     <ClCompile Include="src\drawer\DRomanCircle.cpp" />
@@ -313,6 +314,7 @@
     <ClInclude Include="src\constParameter.h" />
     <ClInclude Include="src\drawer\DBase.h" />
     <ClInclude Include="src\drawer\DBreeze.h" />
+    <ClInclude Include="src\drawer\DClouds.h" />
     <ClInclude Include="src\drawer\DEgyptianVertical.h" />
     <ClInclude Include="src\drawer\DPortrait.h" />
     <ClInclude Include="src\drawer\drawer.h" />
