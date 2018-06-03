@@ -20,8 +20,9 @@ private:
 	//DStainedGlass _dsg;
 	//DEgyptianVertical _dev;
 	//DBreeze _dbr;
+	DClouds _dc;
 	//DTemple _dtp;
-	DPortrait _dpt;
+	//DPortrait _dpt;
 	ofxPostProcessing _post;
 	float _mainTimer;
 };

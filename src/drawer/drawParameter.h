@@ -24,7 +24,12 @@ const float cBreezParticalSpeedMax = 500.0f;
 const float cBreezParticalSizeMin = 5.0f;
 const float cBreezParticalSizeMax = 20.0f;
 
-const int cCloudImgNum = 5;
+const int cCloudImgNum = 4;
+const int cCloudColorHueMin = 180;
+const int cCloudColorHueMax = 220;
+const int cCloudImageBaseWidth = 1000;
+const int cCloudParticalMax = 100;
+const int cCloudUnitMax = 30;
 
 const int cTemplePillarRowNum = 8;
 
@@ -34,4 +39,5 @@ const int cPortraitPhotoSize = 1000;
 const int cPortraitMaskToPhoto = 5;
 const int cPortraitMaskThreshold = 150;
 const int cPortraitCircleRadius = cPortraitPhotoSize * 0.4f;
+
 

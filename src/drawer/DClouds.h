@@ -17,25 +17,26 @@ private:
 			_anim(0.0f)
 			, _animV(0.0f)
 			, _cloudIdx(0)
+			, _alpha(0.0f)
 		{}
 
 		void update(float delta);
 		void set(int cloudIndex);
-		void set(ofColor color);
+		void set();
+		ofVec2f getPos();
+		ofColor getColor();
 
 	private:
 		void init();
 	public:
 
 		eCloudType _eType;
-
 		int _cloudIdx;
-
 		ofColor _c;
-		ofxAnimatableFloat _animAlpha;
-		
+		float _alpha;		
 		ofVec2f _source, _target;
 		float _anim, _animV;
+		float _size;
 	};
 public:
 	DClouds()
@@ -57,8 +58,14 @@ private:
 
 	void addPartical();
 	void addCloudUnit();
+	void checkCloudUnit();
+
+	void emitter(float delta);
 
 private:
+	float _pTimer, _pEmmiterT;
+	float _cTimer, _cEmmiterT;
+
 	list<cloudUnit> _cloudPartical;
 	list<cloudUnit> _cloudList;
 	array<ofImage, cCloudImgNum> _cloudsImg;
