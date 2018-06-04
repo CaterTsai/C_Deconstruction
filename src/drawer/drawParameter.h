@@ -40,4 +40,19 @@ const int cPortraitMaskToPhoto = 5;
 const int cPortraitMaskThreshold = 150;
 const int cPortraitCircleRadius = cPortraitPhotoSize * 0.4f;
 
+//DTail
+
+//DLife
+const int cWorldWidth = 150;
+const int cWorldHeight = 150;
+
+//DMandelbrotSet
+const int cDMSCanvasWidth = 1024;
+const int cDMSCanvasHeight = 1024;
+const int cDMSMaximunCheck = 500;
+const float cDMSZoomMax = 100000.0;
+const int cDMSColorPatternNum = 6;
+const int cDMSCenterNum = 15;
+const pair<double, double> cDMSRealPartRange(-1.5, 1.5);
+const pair<double, double> cDMSImaginePartRange(-1.5, 1.5);
 

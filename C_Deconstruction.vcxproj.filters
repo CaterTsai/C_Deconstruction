@@ -280,13 +280,22 @@
     <ClCompile Include="..\..\..\addons\ofxAssimpModelLoader\src\ofxAssimpTexture.cpp">
       <Filter>addons\ofxAssimpModelLoader\src</Filter>
     </ClCompile>
-    <ClCompile Include="src\DTemple.cpp">
-      <Filter>src\drawer\DElement</Filter>
-    </ClCompile>
     <ClCompile Include="src\drawer\DPortrait.cpp">
       <Filter>src\drawer\DElement</Filter>
     </ClCompile>
     <ClCompile Include="src\drawer\DClouds.cpp">
+      <Filter>src\drawer\DElement</Filter>
+    </ClCompile>
+    <ClCompile Include="src\drawer\DLife.cpp">
+      <Filter>src\drawer\DElement</Filter>
+    </ClCompile>
+    <ClCompile Include="src\drawer\DMandelbrotSet.cpp">
+      <Filter>src\drawer\DElement</Filter>
+    </ClCompile>
+    <ClCompile Include="src\drawer\DTail.cpp">
+      <Filter>src\drawer\DElement</Filter>
+    </ClCompile>
+    <ClCompile Include="src\drawer\DTemple.cpp">
       <Filter>src\drawer\DElement</Filter>
     </ClCompile>
   </ItemGroup>
@@ -833,13 +842,22 @@
     <ClInclude Include="..\..\..\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\version.h">
       <Filter>addons\ofxAssimpModelLoader\libs</Filter>
     </ClInclude>
-    <ClInclude Include="src\DTemple.h">
-      <Filter>src\drawer\DElement</Filter>
-    </ClInclude>
     <ClInclude Include="src\drawer\DPortrait.h">
       <Filter>src\drawer\DElement</Filter>
     </ClInclude>
     <ClInclude Include="src\drawer\DClouds.h">
+      <Filter>src\drawer\DElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\drawer\DLife.h">
+      <Filter>src\drawer\DElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\drawer\DMandelbrotSet.h">
+      <Filter>src\drawer\DElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\drawer\DTail.h">
+      <Filter>src\drawer\DElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\drawer\DTemple.h">
       <Filter>src\drawer\DElement</Filter>
     </ClInclude>
   </ItemGroup>

@@ -10,6 +10,9 @@ enum eDType
 	eDCloud,
 	eDTemple,
 	eDPortrait,
-
+	//?
+	eDTail,
+	eDMandelbrotSet, //Tree
+	eDLife,
 	eDTypeNum
 };
