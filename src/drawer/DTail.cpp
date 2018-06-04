@@ -33,7 +33,7 @@ void DTail::tail::update(float delta)
 	{
 		return;
 	}
-	
+
 	if (_isDecline)
 	{
 		int index = 0;
@@ -51,11 +51,12 @@ void DTail::tail::update(float delta)
 				_tailMesh.setVertex(index * 2, p1);
 				_tailMesh.setVertex(index * 2 + 1, p2);
 			}
+			index++;
 		}
-		index++;
+
 	}
 
-	for(auto& iter : _tailUnitList)
+	for (auto& iter : _tailUnitList)
 	{
 		iter.lifeT -= delta;
 	}
@@ -66,16 +67,13 @@ void DTail::tail::update(float delta)
 		_tailMesh.removeVertex(0);
 		_tailMesh.removeVertex(0);
 	}
-	
+
 }
 
 //--------------------------------------
 void DTail::tail::draw()
 {
-	ofPushStyle();
-	ofSetColor(255);
 	_tailMesh.draw();
-	ofPopStyle();
 }
 
 //--------------------------------------
@@ -131,7 +129,7 @@ void DTail::partical::set(ofVec2f p, ofVec2f v, ofVec2f a, float t)
 	_vec.set(v);
 	_lifeLength = _life = t;
 
-	_tail.set(t * 0.5, _size, true, 1.0);
+	_tail.set(t * 0.2, _size, true, t * 0.4);
 }
 
 //--------------------------------------
@@ -147,9 +145,14 @@ void DTail::partical::update(float delta, ofVec2f desired)
 	_vec += steer * delta;
 	_pos += _vec * delta;
 
-	if (_growTail)
+	if (_haveTail && _growTail)
 	{
-		_tail.addPos(_pos);
+		_tailTimer -= delta;
+		if (_tailTimer < 0)
+		{
+			_tail.addPos(_pos);
+			_tailTimer = 0.05f;
+		}
 	}
 
 	_tail.update(delta);
@@ -181,12 +184,17 @@ void DTail::update(float delta)
 {
 	CHECK_START();
 
+	_timer -= delta;
+	if (_timer < 0.0f)
+	{
+		emitter(_emitterNum);
+		_timer = _emitterT;
+	}
+
 	for (auto& iter : _pList)
 	{
 		iter.update(delta, getFlow(iter._pos));
 	}
-
-
 	checkPartical();
 }
 
@@ -195,13 +203,10 @@ void DTail::draw()
 {
 	CHECK_START();
 
-	//Debug
-	//displayFlow(0, 0, cWindowWidth, cWindowHeight);
-
 	ofPushStyle();
 	for (auto& iter : _pList)
 	{
-		ofSetColor(255, iter._life / iter._lifeLength * 255.0f);
+		ofSetColor(iter._color);
 		drawPartical(iter);
 	}
 	ofPopStyle();
@@ -211,6 +216,8 @@ void DTail::draw()
 void DTail::start()
 {
 	generateFlowFields();
+	_emitterNum = cTailEmitterNumMax;
+	_timer = _emitterT = cTailEmitterTFast;
 	_isStart = true;
 }
 
@@ -239,9 +246,9 @@ void DTail::generateFlowFields()
 		for (int j = 0; j < cFieldCols; j++)
 		{
 			//float theta = ofMap(ofNoise(i * offset, j * offset), 0, 1, 0, TWO_PI);
-			float theta = ofRandom(-PI * 0.75, -PI * 0.25f);
+			float theta = ofRandom(-PI * 0.5, -PI * 0.25f);
 			ofVec2f desired(cos(theta), sin(theta));
-			_flowFields[i][j].set(desired.normalized() * 100);
+			_flowFields[i][j].set(desired.normalized() * ofRandom(cTailFlowFieldsMin, cTailFlowFieldsMax));
 		}
 	}
 }
@@ -278,9 +285,18 @@ ofVec2f DTail::getFlow(ofVec2f pos)
 	int x = static_cast<int>(((pos.x - cBreezRange.x) / cBreezRange.width) * cFieldCols);
 	int y = static_cast<int>(((pos.y - cBreezRange.y) / cBreezRange.height) * cFieldRows);
 
+
 	x = (x == cFieldCols) ? x - 1 : x;
 	y = (y == cFieldRows) ? y - 1 : y;
-	return _flowFields[y][x];
+
+	if (x >= 0 && x < cFieldCols && y > 0 && y < cFieldRows)
+	{
+		return _flowFields[y][x];
+	}
+	else
+	{
+		return ofVec2f(0);
+	}
 }
 
 //--------------------------------------
@@ -295,28 +311,46 @@ void DTail::checkPartical()
 //--------------------------------------
 void DTail::drawPartical(partical& p)
 {
-	ofPushStyle();
-	for (auto& iter : _pList)
+	if (p._haveTail)
 	{
-		ofDrawCircle(iter._pos, 10);
-		iter._tail.draw();
+		p._tail.draw();
 	}
-	ofPopStyle();
+	else
+	{
+		ofDrawCircle(p._pos, p._size);
+	}
 }
 
 //--------------------------------------
-void DTail::emitter()
+void DTail::emitter(int num)
 {
-	partical newP;
-	float theta = ofRandom(-PI * 0.75, -PI * 0.25f);
-	ofVec2f pos(ofRandom(cTailRange.getMinX(), cTailRange.getMaxX()), cTailRange.getMaxY());
-	ofVec2f vec(cos(theta), sin(theta));
-	ofVec2f acc(0);
+	for (int i = 0; i < num; i++)
+	{
+		ofColor c(55, 51, 128);
+		c.setHueAngle(c.getHueAngle() + ofRandom(-30.0, 30.0));
+
+		partical newP;
+		float theta = ofRandom(-PI * 0.5, -PI * 0.25f);
+		ofVec2f pos;
+		if (rand() % 5 == 0)
+		{
+			pos.set(cTailRange.getMinX(), ofRandom(cTailRange.getMinY(), cTailRange.getMaxY()));
+		}
+		else
+		{
+			pos.set(ofRandom(cTailRange.getMinX(), cTailRange.getMaxX()), cTailRange.getMaxY());
+		}
+		ofVec2f vec(cos(theta), sin(theta));
+		ofVec2f acc(0);
 
 
-	float lifeT = ofRandom(5, 15);
-	vec *= ofRandom(cBreezParticalSpeedMin, cBreezParticalSpeedMax);
-	newP.set(pos, vec, acc, lifeT);
+		float lifeT = cTailRange.getHeight() / cTailParticalSpeedMin * 2.0f;
+		vec *= ofRandom(cTailParticalSpeedMin, cTailParticalSpeedMax);
+		newP.set(pos, vec, acc, lifeT);
+		newP._color = c;
 
-	_pList.push_back(newP);
+		newP._haveTail = (rand() % 3 != 0);
+		_pList.push_back(newP);
+	}
+
 }

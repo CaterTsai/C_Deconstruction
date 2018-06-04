@@ -43,6 +43,16 @@ const int cPortraitCircleRadius = cPortraitPhotoSize * 0.4f;
 //DTail
 const ofRectangle cTailRange = ofRectangle(0, 0, cWindowWidth, cWindowHeight);
 const int cTailWidthLimit = 2;
+const float cTailParticalSizeMin = 2.0f;
+const float cTailParticalSizeMax = 4.0f;
+const float cTailParticalSpeedMin = 50.0f;
+const float cTailParticalSpeedMax = 150.0f;
+const float cTailFlowFieldsMin = 50.0f;
+const float cTailFlowFieldsMax = 150.0f;
+const int cTailEmitterNumMin = 1;
+const int cTailEmitterNumMax = 5;
+const float cTailEmitterTSlow = 1.0;
+const float cTailEmitterTFast = 0.2;
 
 //DLife
 const int cWorldWidth = 150;

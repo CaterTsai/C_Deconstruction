@@ -29,7 +29,6 @@ class DTail : public DBase
 	};
 #pragma endregion
 
-
 #pragma region partical
 private:
 	class partical {
@@ -38,7 +37,8 @@ private:
 			:_pos(0.0f)
 			, _vec(0.0f)
 			, _growTail(true)
-			, _size(ofRandom(cBreezParticalSizeMin, cBreezParticalSizeMax))
+			, _size(ofRandom(cTailParticalSizeMin, cTailParticalSizeMax))
+			, _tailTimer(0.05)
 		{
 		}
 
@@ -46,18 +46,23 @@ private:
 		void update(float delta, ofVec2f desired);
 
 	public:
+		ofColor _color;
 		ofVec2f _pos, _vec;
 		float _life, _lifeLength;
 		float _size;
-		bool _growTail;
+		bool _haveTail, _growTail;
 		tail _tail;
+		float _tailTimer;
 	};
 #pragma endregion
-
 
 public:
 	DTail()
 		:DBase(eDTail)
+		, _emitterNum(cTailEmitterNumMin)
+		, _emitterT(cTailEmitterTSlow)
+		, _timer(0.0f)
+
 	{
 	}
 
@@ -76,9 +81,11 @@ private:
 
 	void checkPartical();
 	void drawPartical(partical& p);
-	void emitter();
+	void emitter(int num = 1);
 
 private:
+	int _emitterNum;
+	float _timer, _emitterT;
 	list<partical> _pList;
 	ofVec2f _flowFields[cFieldRows][cFieldCols];
 };
