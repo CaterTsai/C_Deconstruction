@@ -3,47 +3,70 @@
 #pragma region Tail
 //--------------------------------------
 DTail::tail::tail()
-	:_width(3.0f)
-	,_declineT(2.0f)
+	:_width(10.0f)
+	, _declineT(1.0f)
 {
-	_tailMesh.setMode(ofPrimitiveMode::OF_PRIMITIVE_TRIANGLES);
+	_tailMesh.setMode(ofPrimitiveMode::OF_PRIMITIVE_TRIANGLE_STRIP);
 
 }
 
 //--------------------------------------
-void DTail::tail::set(float width, float declineT)
+DTail::tail::~tail()
 {
+	_tailMesh.clear();
+	_tailUnitList.clear();
+}
+
+//--------------------------------------
+void DTail::tail::set(float lifeT, float width, bool isDecline, float declineT)
+{
+	_tailLifeT = lifeT;
 	_width = width;
+	_isDecline = isDecline;
 	_declineT = declineT;
 }
 
 //--------------------------------------
 void DTail::tail::update(float delta)
 {
-	if (_tailUnitList.size() < 2)
+	if (_tailMesh.getNumVertices() < 2)
 	{
 		return;
 	}
-	int index = 0;
-	for (auto& iter : _tailUnitList)
+	
+	if (_isDecline)
 	{
-		if (index == 0)
+		int index = 0;
+		for (auto& iter : _tailUnitList)
 		{
-			continue;
+			auto p1 = _tailMesh.getVertex(index * 2);
+			auto p2 = _tailMesh.getVertex(index * 2 + 1);
+			p1 += delta * iter.decline[0];
+			p2 += delta * iter.decline[1];
+
+			auto check = (p2 - p1) * iter.decline[0];
+
+			if (p1.distance(p2) > cTailWidthLimit && check.x > 0 && check.y > 0)
+			{
+				_tailMesh.setVertex(index * 2, p1);
+				_tailMesh.setVertex(index * 2 + 1, p2);
+			}
 		}
-
-
-		auto p1 = _tailMesh.getVertex(index * 2);
-		auto p2 = _tailMesh.getVertex(index * 2 + 1);
-
-		p1 += delta * iter.decline[0];
-		p2 += delta * iter.decline[1];
-
-		_tailMesh.setVertex(index, p1);
-		_tailMesh.setVertex(index, p2);
-
 		index++;
 	}
+
+	for(auto& iter : _tailUnitList)
+	{
+		iter.lifeT -= delta;
+	}
+
+	if (_tailUnitList.begin()->lifeT < 0.0f)
+	{
+		_tailUnitList.pop_front();
+		_tailMesh.removeVertex(0);
+		_tailMesh.removeVertex(0);
+	}
+	
 }
 
 //--------------------------------------
@@ -51,7 +74,7 @@ void DTail::tail::draw()
 {
 	ofPushStyle();
 	ofSetColor(255);
-	_tailMesh.drawWireframe();
+	_tailMesh.draw();
 	ofPopStyle();
 }
 
@@ -60,11 +83,45 @@ void DTail::tail::addPos(ofVec2f p)
 {
 	tailUnit newTailUnit;
 	newTailUnit.pos = p;
+	newTailUnit.lifeT = _tailLifeT;
 
+	if (_tailUnitList.size() == 0)
+	{
+		_tailUnitList.push_back(newTailUnit);
+	}
+	else
+	{
+		auto last = _tailUnitList.rbegin();
+		ofVec2f v = newTailUnit.pos - last->pos;
+		v.normalize();
+		ofVec2f up, down;
+		up = down = v;
+
+		up.rotate(90);
+		down.rotate(-90);
+
+		ofVec2f pUp = newTailUnit.pos + (up * _width);
+		ofVec2f pDown = newTailUnit.pos + (down * _width);
+
+		newTailUnit.decline[0] = (down  * _width) / _declineT;
+		newTailUnit.decline[1] = (up  * _width) / _declineT;
+
+		if (_tailUnitList.size() == 1)
+		{
+			ofVec2f pFirstUp = last->pos + (up * _width);
+			ofVec2f pFirstDown = last->pos + (down * _width);
+			last->decline[0] = (down  * _width) / _declineT;
+			last->decline[1] = (up  * _width) / _declineT;
+			_tailMesh.addVertex(pFirstUp);
+			_tailMesh.addVertex(pFirstDown);
+		}
+		_tailMesh.addVertex(pUp);
+		_tailMesh.addVertex(pDown);
+		_tailUnitList.push_back(newTailUnit);
+	}
 }
 
 #pragma endregion
-
 
 #pragma region partical
 //--------------------------------------
@@ -73,6 +130,8 @@ void DTail::partical::set(ofVec2f p, ofVec2f v, ofVec2f a, float t)
 	_pos.set(p);
 	_vec.set(v);
 	_lifeLength = _life = t;
+
+	_tail.set(t * 0.5, _size, true, 1.0);
 }
 
 //--------------------------------------
@@ -88,24 +147,30 @@ void DTail::partical::update(float delta, ofVec2f desired)
 	_vec += steer * delta;
 	_pos += _vec * delta;
 
+	if (_growTail)
+	{
+		_tail.addPos(_pos);
+	}
+
+	_tail.update(delta);
 
 	//Move
 	if (_pos.x > cBreezRange.getMaxX())
 	{
-		_life = 0;
+		_growTail = false;
 	}
 	else if (_pos.x < cBreezRange.getMinX())
 	{
-		_life = 0;
+		_growTail = false;
 	}
 
 	if (_pos.y > cBreezRange.getMaxY())
 	{
-		_life = 0;
+		_growTail = false;
 	}
 	else if (_pos.y < cBreezRange.getMinY())
 	{
-		_life = 0;
+		_growTail = false;
 	}
 	_life -= delta;
 }
@@ -121,6 +186,7 @@ void DTail::update(float delta)
 		iter.update(delta, getFlow(iter._pos));
 	}
 
+
 	checkPartical();
 }
 
@@ -133,8 +199,6 @@ void DTail::draw()
 	//displayFlow(0, 0, cWindowWidth, cWindowHeight);
 
 	ofPushStyle();
-	ofNoFill();
-
 	for (auto& iter : _pList)
 	{
 		ofSetColor(255, iter._life / iter._lifeLength * 255.0f);
@@ -177,7 +241,7 @@ void DTail::generateFlowFields()
 			//float theta = ofMap(ofNoise(i * offset, j * offset), 0, 1, 0, TWO_PI);
 			float theta = ofRandom(-PI * 0.75, -PI * 0.25f);
 			ofVec2f desired(cos(theta), sin(theta));
-			_flowFields[i][j].set(desired.normalized() * 500);
+			_flowFields[i][j].set(desired.normalized() * 100);
 		}
 	}
 }
@@ -231,15 +295,21 @@ void DTail::checkPartical()
 //--------------------------------------
 void DTail::drawPartical(partical& p)
 {
-
+	ofPushStyle();
+	for (auto& iter : _pList)
+	{
+		ofDrawCircle(iter._pos, 10);
+		iter._tail.draw();
+	}
+	ofPopStyle();
 }
 
 //--------------------------------------
 void DTail::emitter()
 {
 	partical newP;
-	float theta = ofRandom(-PI / 4.0f, PI / 4.0f);
-	ofVec2f pos(cBreezRange.getMinX(), ofRandom(cBreezRange.getMinY(), cBreezRange.getMaxY()));
+	float theta = ofRandom(-PI * 0.75, -PI * 0.25f);
+	ofVec2f pos(ofRandom(cTailRange.getMinX(), cTailRange.getMaxX()), cTailRange.getMaxY());
 	ofVec2f vec(cos(theta), sin(theta));
 	ofVec2f acc(0);
 

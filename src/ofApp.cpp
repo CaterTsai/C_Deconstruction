@@ -3,6 +3,7 @@
 //--------------------------------------------------------------
 void ofApp::setup() {
 	ofBackground(0);
+	ofSetFrameRate(60);
 	_post.init(1024, 1024);
 	_post.createPass<BloomPass>()->setEnabled(true);
 	_post.createPass<BloomPass>()->setEnabled(true);

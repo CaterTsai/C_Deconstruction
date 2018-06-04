@@ -41,6 +41,8 @@ const int cPortraitMaskThreshold = 150;
 const int cPortraitCircleRadius = cPortraitPhotoSize * 0.4f;
 
 //DTail
+const ofRectangle cTailRange = ofRectangle(0, 0, cWindowWidth, cWindowHeight);
+const int cTailWidthLimit = 2;
 
 //DLife
 const int cWorldWidth = 150;
