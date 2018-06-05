@@ -441,6 +441,15 @@
     <Filter Include="src\singleton\display">
       <UniqueIdentifier>{c5de8ed0-1b44-444d-b943-d2b4ed8d3ed7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\scene">
+      <UniqueIdentifier>{ae436086-cfbd-49d4-9d2b-c389d7d96ee4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\scene\SBase">
+      <UniqueIdentifier>{d2289d50-5447-4ed3-b09a-c2ca578020b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\scene\SElement">
+      <UniqueIdentifier>{22492e4f-68a4-4c3b-bcb6-453fa054d0bb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\ofApp.h">
@@ -922,6 +931,81 @@
     </ClInclude>
     <ClInclude Include="src\singleton\displayMgr.h">
       <Filter>src\singleton\display</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scene\SBase.h">
+      <Filter>src\scene\SBase</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scene\scene.h">
+      <Filter>src\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scene\SType.h">
+      <Filter>src\scene\SBase</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scene\SBIntro.h">
+      <Filter>src\scene\SElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scene\SB01.h">
+      <Filter>src\scene\SElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scene\SB02.h">
+      <Filter>src\scene\SElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scene\SB03.h">
+      <Filter>src\scene\SElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scene\SC01.h">
+      <Filter>src\scene\SElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scene\SC02.h">
+      <Filter>src\scene\SElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scene\SC03.h">
+      <Filter>src\scene\SElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scene\SC04.h">
+      <Filter>src\scene\SElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scene\SCIntro.h">
+      <Filter>src\scene\SElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scene\SEncore.h">
+      <Filter>src\scene\SElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scene\SM01.h">
+      <Filter>src\scene\SElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scene\SM02.h">
+      <Filter>src\scene\SElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scene\SM03.h">
+      <Filter>src\scene\SElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scene\SM04.h">
+      <Filter>src\scene\SElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scene\SMIntro.h">
+      <Filter>src\scene\SElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scene\SR01.h">
+      <Filter>src\scene\SElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scene\SR02.h">
+      <Filter>src\scene\SElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scene\SR03.h">
+      <Filter>src\scene\SElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scene\SR04.h">
+      <Filter>src\scene\SElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scene\SR05.h">
+      <Filter>src\scene\SElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scene\SRIntro.h">
+      <Filter>src\scene\SElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scene\SIdle.h">
+      <Filter>src\scene\SElement</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

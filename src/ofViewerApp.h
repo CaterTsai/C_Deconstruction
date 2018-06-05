@@ -2,7 +2,12 @@
 
 #include "constParameter.h"
 #include "displayMgr.h"
+#include "camCtrl.h"
+#include "postFilter.h"
+#include "videoMgr.h"
+#include "midiCtrl.h"
 
+#include "scene.h"
 
 class ofViewerApp : public ofBaseApp {
 

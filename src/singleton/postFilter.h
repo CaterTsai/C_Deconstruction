@@ -1,6 +1,6 @@
 #pragma once
 
-#include "constParameter.h"
+#include "../constParameter.h"
 #include "ofxPostProcessing.h"
 
 enum ePostFilterType

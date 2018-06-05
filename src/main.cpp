@@ -11,7 +11,7 @@ int main( ){
 	//Projection Window
 	settings_.width = cProjectionWindowWidth;
 	settings_.height = cProjectionWindowHeight;
-	settings_.setPosition(ofVec2f(0, 0));
+	settings_.setPosition(ofVec2f(1920, 0));
 	settings_.resizable = false;
 	shared_ptr<ofAppBaseWindow> displaerWindow = ofCreateWindow(settings_);
 
