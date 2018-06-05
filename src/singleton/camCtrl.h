@@ -14,7 +14,7 @@ public:
 	ofEasyCam& getCanvasCam();
 public:
 	camUnit _canvasCam;
-	array<camUnit, cDisplayNum> _squareCams;
+	array<camUnit, cDisplayNum> _displayCams;
 
 //-------------------
 //Singleton

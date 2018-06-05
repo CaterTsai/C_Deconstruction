@@ -3,7 +3,7 @@
 //--------------------------------------------------------------
 void camCtrl::update(float delta)
 {
-	for (auto& iter : _squareCams)
+	for (auto& iter : _displayCams)
 	{
 		iter.update(delta);
 	}
@@ -16,7 +16,7 @@ void camCtrl::displayPos(ofVec2f pos)
 	ostringstream ss;
 	for (int i = 0; i < cDisplayNum; i++)
 	{
-		ofVec3f posC = _squareCams[i]._cam.getGlobalPosition();
+		ofVec3f posC = _displayCams[i]._cam.getGlobalPosition();
 		
 		ss << "cam " + ofToString(i);
 		ss << " = (" + ofToString(posC.x);
@@ -37,7 +37,7 @@ void camCtrl::displayPos(ofVec2f pos)
 //--------------------------------------------------------------
 void camCtrl::stopAll()
 {
-	for (auto& iter : _squareCams)
+	for (auto& iter : _displayCams)
 	{
 		iter.stop();
 	}
@@ -47,7 +47,7 @@ void camCtrl::stopAll()
 //--------------------------------------------------------------
 void camCtrl::reset()
 {
-	for (auto& iter : _squareCams)
+	for (auto& iter : _displayCams)
 	{
 		iter.reset();
 	}
@@ -57,7 +57,7 @@ void camCtrl::reset()
 //--------------------------------------------------------------
 ofEasyCam & camCtrl::getSquareCam(int id)
 {
-	return	_squareCams[id]._cam;
+	return	_displayCams[id]._cam;
 }
 
 //--------------------------------------------------------------

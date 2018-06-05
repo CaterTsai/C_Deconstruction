@@ -2,7 +2,7 @@
 
 #include "ofMain.h"
 
-#define PROJECTION_MODE
+//#define PROJECTION_MODE
 
 static string ws2s(wstring wstr)
 {
@@ -37,7 +37,7 @@ const int cViewWindowWidth = 1024;
 const int cViewWindowHeight = 1024;
 
 //--------------
-//SquareUnit
+//Display Manager
 const int cCtrlPointNum = 4;
 
 const int cCtrlPointCircleRadius = cProjectionWindowHeight * 0.02;
@@ -56,20 +56,10 @@ enum eDisplayType : int
 //Video Mgr
 enum eVideoType : int
 {
-	eVideoDrum_1 = 0
-	, eVideoDrum_2
-	, eVideoDrum_3
-	, eVideoBass_1
-	, eVideoBass_2
-	, eVideoBass_3
-	, eVideoBongo_1
-	, eVideoBongo_2
-	, eVideoBongo_3
-	, eVideoMeiosis_1
-	, eVideoMeiosis_2
-	, eVideoMeiosis_3
-	, eVideoMeiosis_4
-	, eVideoMeiosis_5
-	, eVideoRotate
+	eVideoBIntro = 0
+	,eVideoCIntro
+	,eVideoRIntro
+	,eVideoMIntro
+	, eVideoMonika
 	, eVideoNum
 };

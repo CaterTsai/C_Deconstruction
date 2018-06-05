@@ -8,7 +8,7 @@ class displayMgr
 public:
 	displayMgr();
 	void setup(string configName = "");
-	void displayEachUnit(ofVec2f pos, int width);
+	void displayEachUnit(ofVec2f pos, int height);
 	void drawToProjection();
 
 	void enableDisplayControl(int unitID);

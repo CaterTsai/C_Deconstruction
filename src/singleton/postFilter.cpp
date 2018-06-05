@@ -1,78 +1,46 @@
 #include "postFilter.h"
 
 //-------------------------------------
-void postFilter::init(int sw, int sh, int cw, int ch)
+void postFilter::init(int index, int w, int h)
 {
-	if (_isInit)
-	{
-		return;
-	}
-	_squarePost.init(sw, sh);
-	_canvasPost.init(cw, ch);
+	_postMgr[index].init(w, h);
 
-	_squarePost.createPass<BloomPass>()->setEnabled(false);
-	_squarePost.createPass<BloomPass>()->setEnabled(false);
-	_squarePost.createPass<NoiseWarpPass>()->setEnabled(false);
-	_squarePost.createPass<ZoomBlurPass>()->setEnabled(false);
-	_squarePost.createPass<KaleidoscopePass>()->setEnabled(false);
-	_squarePost.createPass<EdgePass>()->setEnabled(false);
-	_squarePost.createPass<PixelatePass>()->setEnabled(false);
-	_squarePost.createPass<RGBShiftPass>()->setEnabled(false);
-	_squarePost.createPass<ToonPass>()->setEnabled(false);
+	_postMgr[index].createPass<BloomPass>()->setEnabled(false);
+	_postMgr[index].createPass<BloomPass>()->setEnabled(false);
+	_postMgr[index].createPass<NoiseWarpPass>()->setEnabled(false);
+	_postMgr[index].createPass<ZoomBlurPass>()->setEnabled(false);
+	_postMgr[index].createPass<KaleidoscopePass>()->setEnabled(false);
+	_postMgr[index].createPass<EdgePass>()->setEnabled(false);
+	_postMgr[index].createPass<PixelatePass>()->setEnabled(false);
+	_postMgr[index].createPass<RGBShiftPass>()->setEnabled(false);
+	_postMgr[index].createPass<ToonPass>()->setEnabled(false);
 
-	_canvasPost.createPass<BloomPass>()->setEnabled(false);
-	_canvasPost.createPass<BloomPass>()->setEnabled(false);
-	_canvasPost.createPass<NoiseWarpPass>()->setEnabled(false);
-	_canvasPost.createPass<ZoomBlurPass>()->setEnabled(false);
-	_canvasPost.createPass<KaleidoscopePass>()->setEnabled(false);
-	_canvasPost.createPass<EdgePass>()->setEnabled(false);
-	_canvasPost.createPass<PixelatePass>()->setEnabled(false);
-	_canvasPost.createPass<RGBShiftPass>()->setEnabled(false);
-	_canvasPost.createPass<ToonPass>()->setEnabled(false);
+	_postMgr[index].setFlip(true);
 
-	_isInit = true;
 }
 
 //-------------------------------------
-void postFilter::filterEnable(bool isSquare, ePostFilterType type)
+void postFilter::filterEnable(int index, ePostFilterType type)
 {
-	if (isSquare)
-	{
-		auto isEnable = !_squarePost[(int)type]->getEnabled();
-		_squarePost[(int)type]->setEnabled(isEnable);
-	}
-	else
-	{
-		auto isEnable = !_canvasPost[(int)type]->getEnabled();
-		_canvasPost[(int)type]->setEnabled(isEnable);
-	}
-	
+	auto isEnable = !_postMgr[index][(int)type]->getEnabled();
+	_postMgr[index][(int)type]->setEnabled(isEnable);
 }
 
 //-------------------------------------
-void postFilter::filterEnable(bool isSquare, ePostFilterType type, bool isEnable)
+void postFilter::filterEnable(int index, ePostFilterType type, bool isEnable)
 {
-	if (isSquare)
-	{
-		_squarePost[(int)type]->setEnabled(isEnable);
-	}
-	else
-	{
-		_canvasPost[(int)type]->setEnabled(isEnable);
-	}
+	_postMgr[index][(int)type]->setEnabled(isEnable);
 }
 
 //-------------------------------------
 void postFilter::disableAll()
 {
-	for (int i = 0; i < _squarePost.size(); i++)
+	for (int i = 0; i < _postMgr.size(); i++)
 	{
-		_squarePost[i]->disable();
-	}
-
-	for (int i = 0; i < _canvasPost.size(); i++)
-	{
-		_canvasPost[i]->disable();
+		for (int j = 0; j < _postMgr[i].size(); j++)
+		{
+			_postMgr[i][j]->disable();
+		}
 	}
 }
 

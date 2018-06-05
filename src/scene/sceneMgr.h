@@ -1,5 +1,8 @@
 #pragma once
 
+#include "SType.h"
+#include "SBase.h"
+
 #include "SIdle.h"
 #include "SBIntro.h"
 #include "SB01.h"

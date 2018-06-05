@@ -19,15 +19,15 @@ enum ePostFilterType
 class postFilter
 {
 public:
-	void init(int sw, int sh, int cw, int ch);
-	void filterEnable(bool isSquare, ePostFilterType type);
-	void filterEnable(bool isSquare, ePostFilterType type, bool isEnable);
+	void init(int index, int w, int h);
+	void filterEnable(int index, ePostFilterType type);
+	void filterEnable(int index, ePostFilterType type, bool isEnable);
 	void disableAll();
 private:
 	bool _isInit;
 
 public:
-	ofxPostProcessing _squarePost, _canvasPost;
+	array<ofxPostProcessing, cDisplayNum> _postMgr;
 //-------------------
 //Singleton
 //-------------------

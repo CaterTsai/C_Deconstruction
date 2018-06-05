@@ -24,17 +24,26 @@ void displayMgr::setup(string configName)
 
 
 //------------------------------
-void displayMgr::displayEachUnit(ofVec2f pos, int width)
+void displayMgr::displayEachUnit(ofVec2f pos, int height)
 {
 	ofPushStyle();
 	ofPushMatrix();
 	ofTranslate(pos);
 	{
-		//float eachSize = (float)width / _displayList.size();
-		//for (int i = 0; i < _displayList.size(); i++)
-		//{
-		//	_displayList[i].drawCanvas(i * eachSize, 0, eachSize);
-		//}
+		int drawPosX = 0;
+		for (int i = 0; i < _displayList.size(); i++)
+		{
+			auto rect = _displayList[i].getSize();
+			int h = height;
+			int w = height * rect.width / rect.height;
+			_displayList[i].drawCanvas(drawPosX, 0, w, h);
+
+			ofNoFill();
+			ofSetColor(255);
+			ofDrawRectangle(drawPosX, 0, w, h);
+
+			drawPosX += w;
+		}
 	}
 	ofPopMatrix();
 	ofPopStyle();
