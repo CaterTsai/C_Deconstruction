@@ -86,6 +86,8 @@ void DLife::update(float delta)
 		_timer = _generationT;
 		nextGeneration();
 	}
+
+	drawOnCanvas();
 }
 
 //-------------------------------------
@@ -128,12 +130,23 @@ void DLife::draw(int x, int y, int w, int h)
 						}
 					}
 					ofSetColor(color);
-					//ofDrawRectangle(-halfW + (tx * unitW) + x, -halfH + (ty * unitH) + y, unitW, unitH);
 					ofDrawRectangle((tx * unitW) + x, (ty * unitH) + y, unitW, unitH);
 				}
 			}
 		}
 	}
+	ofPopStyle();
+}
+
+//-------------------------------------
+void DLife::draw()
+{
+	ofPushStyle();
+	ofSetColor(255);
+	_canvas.getTextureReference().bind();
+	//ofDrawSphere(500, 500, 50);
+	_sphere.draw();
+	_canvas.getTextureReference().unbind();
 	ofPopStyle();
 }
 
@@ -150,6 +163,14 @@ void DLife::start()
 void DLife::stop()
 {
 	_isStart = false;
+}
+
+//-------------------------------------
+void DLife::setSphere(ofVec2f pos, float size)
+{
+	_sphere.setRadius(size);
+	_sphere.setPosition(pos);
+	_sphere.mapTexCoordsFromTexture(_canvas.getTexture());
 }
 
 //-------------------------------------
@@ -261,4 +282,15 @@ void DLife::evolution(int x, int y)
 	int index = x + y * cWorldWidth;
 	_nextGeneration[index] = _nowGeneration[index];
 	_nextGeneration[index].evolution(counter, nextType);
+}
+
+//-------------------------------------
+void DLife::drawOnCanvas()
+{
+	_canvas.begin();
+	{
+		ofClear(0);
+		draw(0, 0, _canvas.getWidth(), _canvas.getHeight());
+	}
+	_canvas.end();
 }

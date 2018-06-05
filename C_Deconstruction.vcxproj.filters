@@ -259,9 +259,6 @@
     <ClCompile Include="..\..\..\addons\ofxLayerMask\src\ofxLayerMask.cpp">
       <Filter>addons\ofxLayerMask\src</Filter>
     </ClCompile>
-    <ClCompile Include="src\postFilter.cpp">
-      <Filter>src\singleton\postFilter</Filter>
-    </ClCompile>
     <ClCompile Include="src\drawer\DEgyptianVertical.cpp">
       <Filter>src\drawer\DElement</Filter>
     </ClCompile>
@@ -289,14 +286,41 @@
     <ClCompile Include="src\drawer\DLife.cpp">
       <Filter>src\drawer\DElement</Filter>
     </ClCompile>
-    <ClCompile Include="src\drawer\DMandelbrotSet.cpp">
-      <Filter>src\drawer\DElement</Filter>
-    </ClCompile>
     <ClCompile Include="src\drawer\DTail.cpp">
       <Filter>src\drawer\DElement</Filter>
     </ClCompile>
     <ClCompile Include="src\drawer\DTemple.cpp">
       <Filter>src\drawer\DElement</Filter>
+    </ClCompile>
+    <ClCompile Include="src\singleton\postFilter.cpp">
+      <Filter>src\singleton\postFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="src\singleton\camCtrl.cpp">
+      <Filter>src\singleton\camCtrl</Filter>
+    </ClCompile>
+    <ClCompile Include="src\singleton\camUnit.cpp">
+      <Filter>src\singleton\camCtrl</Filter>
+    </ClCompile>
+    <ClCompile Include="src\singleton\ctrlMap.cpp">
+      <Filter>src\singleton\ctrlMap</Filter>
+    </ClCompile>
+    <ClCompile Include="src\singleton\midiCtrl.cpp">
+      <Filter>src\singleton\midiCtrl</Filter>
+    </ClCompile>
+    <ClCompile Include="src\singleton\videoMgr.cpp">
+      <Filter>src\singleton\videoMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ofViewerApp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ofDisplayerApp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\singleton\displayUnit.cpp">
+      <Filter>src\singleton\display</Filter>
+    </ClCompile>
+    <ClCompile Include="src\singleton\displayMgr.cpp">
+      <Filter>src\singleton\display</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -401,6 +425,21 @@
     </Filter>
     <Filter Include="addons\ofxAssimpModelLoader\libs">
       <UniqueIdentifier>{62bc78bb-bad1-4337-9f48-7f6e42f478c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\singleton\camCtrl">
+      <UniqueIdentifier>{098a26a0-fbc1-4b60-997f-5b23df2632f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\singleton\ctrlMap">
+      <UniqueIdentifier>{69b6324c-1410-4811-8a2c-37a0b649b7bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\singleton\midiCtrl">
+      <UniqueIdentifier>{b700da17-05c6-49a4-a9aa-90816c4b9d0b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\singleton\videoMgr">
+      <UniqueIdentifier>{924925f7-7513-4e64-85ef-09ac021d800e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\singleton\display">
+      <UniqueIdentifier>{c5de8ed0-1b44-444d-b943-d2b4ed8d3ed7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -710,9 +749,6 @@
     <ClInclude Include="..\..\..\addons\ofxLayerMask\src\ofxLayerMask.h">
       <Filter>addons\ofxLayerMask\src</Filter>
     </ClInclude>
-    <ClInclude Include="src\postFilter.h">
-      <Filter>src\singleton\postFilter</Filter>
-    </ClInclude>
     <ClInclude Include="src\drawer\DEgyptianVertical.h">
       <Filter>src\drawer\DElement</Filter>
     </ClInclude>
@@ -851,14 +887,41 @@
     <ClInclude Include="src\drawer\DLife.h">
       <Filter>src\drawer\DElement</Filter>
     </ClInclude>
-    <ClInclude Include="src\drawer\DMandelbrotSet.h">
-      <Filter>src\drawer\DElement</Filter>
-    </ClInclude>
     <ClInclude Include="src\drawer\DTail.h">
       <Filter>src\drawer\DElement</Filter>
     </ClInclude>
     <ClInclude Include="src\drawer\DTemple.h">
       <Filter>src\drawer\DElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\singleton\postFilter.h">
+      <Filter>src\singleton\postFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="src\singleton\camCtrl.h">
+      <Filter>src\singleton\camCtrl</Filter>
+    </ClInclude>
+    <ClInclude Include="src\singleton\camUnit.h">
+      <Filter>src\singleton\camCtrl</Filter>
+    </ClInclude>
+    <ClInclude Include="src\singleton\ctrlMap.h">
+      <Filter>src\singleton\ctrlMap</Filter>
+    </ClInclude>
+    <ClInclude Include="src\singleton\midiCtrl.h">
+      <Filter>src\singleton\midiCtrl</Filter>
+    </ClInclude>
+    <ClInclude Include="src\singleton\videoMgr.h">
+      <Filter>src\singleton\videoMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ofViewerApp.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ofDisplayerApp.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\singleton\displayUnit.h">
+      <Filter>src\singleton\display</Filter>
+    </ClInclude>
+    <ClInclude Include="src\singleton\displayMgr.h">
+      <Filter>src\singleton\display</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

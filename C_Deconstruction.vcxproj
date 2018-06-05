@@ -95,7 +95,7 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxAnimatable\src;..\..\..\addons\ofxDSHapVideoPlayer\libs;..\..\..\addons\ofxDSHapVideoPlayer\libs\External;..\..\..\addons\ofxDSHapVideoPlayer\libs\External\DirectShow;..\..\..\addons\ofxDSHapVideoPlayer\libs\External\DirectShow\BaseClasses;..\..\..\addons\ofxDSHapVideoPlayer\libs\External\snappy;..\..\..\addons\ofxDSHapVideoPlayer\src;..\..\..\addons\ofxMidi\libs;..\..\..\addons\ofxMidi\libs\pgmidi;..\..\..\addons\ofxMidi\libs\rtmidi;..\..\..\addons\ofxMidi\src;..\..\..\addons\ofxMidi\src\desktop;..\..\..\addons\ofxMidi\src\ios;..\..\..\addons\ofxPostProcessing\src;..\..\..\addons\ofxTrueTypeFontUC\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxLayerMask\src;..\..\..\addons\ofxXmlSettings\src;.\src\drawer\;.\src\shaderVoronoi\;..\..\..\addons\ofxAssimpModelLoader\libs;..\..\..\addons\ofxAssimpModelLoader\libs\assimp;..\..\..\addons\ofxAssimpModelLoader\libs\assimp\include;..\..\..\addons\ofxAssimpModelLoader\libs\assimp\include\assimp;..\..\..\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler;..\..\..\addons\ofxAssimpModelLoader\libs\assimp\lib;..\..\..\addons\ofxAssimpModelLoader\libs\assimp\lib\emscripten;..\..\..\addons\ofxAssimpModelLoader\libs\assimp\lib\vs;..\..\..\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\Win32;..\..\..\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64;..\..\..\addons\ofxAssimpModelLoader\libs\assimp\license;..\..\..\addons\ofxAssimpModelLoader\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxAnimatable\src;..\..\..\addons\ofxDSHapVideoPlayer\libs;..\..\..\addons\ofxDSHapVideoPlayer\libs\External;..\..\..\addons\ofxDSHapVideoPlayer\libs\External\DirectShow;..\..\..\addons\ofxDSHapVideoPlayer\libs\External\DirectShow\BaseClasses;..\..\..\addons\ofxDSHapVideoPlayer\libs\External\snappy;..\..\..\addons\ofxDSHapVideoPlayer\src;..\..\..\addons\ofxMidi\libs;..\..\..\addons\ofxMidi\libs\pgmidi;..\..\..\addons\ofxMidi\libs\rtmidi;..\..\..\addons\ofxMidi\src;..\..\..\addons\ofxMidi\src\desktop;..\..\..\addons\ofxMidi\src\ios;..\..\..\addons\ofxPostProcessing\src;..\..\..\addons\ofxTrueTypeFontUC\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxLayerMask\src;..\..\..\addons\ofxXmlSettings\src;.\src\drawer\;.\src\shaderVoronoi\;..\..\..\addons\ofxAssimpModelLoader\libs;..\..\..\addons\ofxAssimpModelLoader\libs\assimp;..\..\..\addons\ofxAssimpModelLoader\libs\assimp\include;..\..\..\addons\ofxAssimpModelLoader\libs\assimp\include\assimp;..\..\..\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler;..\..\..\addons\ofxAssimpModelLoader\libs\assimp\lib;..\..\..\addons\ofxAssimpModelLoader\libs\assimp\lib\emscripten;..\..\..\addons\ofxAssimpModelLoader\libs\assimp\lib\vs;..\..\..\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\Win32;..\..\..\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64;..\..\..\addons\ofxAssimpModelLoader\libs\assimp\license;..\..\..\addons\ofxAssimpModelLoader\src;.\src\singleton\</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
     </ClCompile>
     <Link>
@@ -133,7 +133,7 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxAnimatable\src;..\..\..\addons\ofxDSHapVideoPlayer\libs;..\..\..\addons\ofxDSHapVideoPlayer\libs\External;..\..\..\addons\ofxDSHapVideoPlayer\libs\External\DirectShow;..\..\..\addons\ofxDSHapVideoPlayer\libs\External\DirectShow\BaseClasses;..\..\..\addons\ofxDSHapVideoPlayer\libs\External\snappy;..\..\..\addons\ofxDSHapVideoPlayer\src;..\..\..\addons\ofxMidi\libs;..\..\..\addons\ofxMidi\libs\pgmidi;..\..\..\addons\ofxMidi\libs\rtmidi;..\..\..\addons\ofxMidi\src;..\..\..\addons\ofxMidi\src\desktop;..\..\..\addons\ofxMidi\src\ios;..\..\..\addons\ofxPostProcessing\src;..\..\..\addons\ofxTrueTypeFontUC\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxLayerMask\src;..\..\..\addons\ofxXmlSettings\src;.\src\drawer\;.\src\shaderVoronoi\;..\..\..\addons\ofxAssimpModelLoader\libs;..\..\..\addons\ofxAssimpModelLoader\libs\assimp;..\..\..\addons\ofxAssimpModelLoader\libs\assimp\include;..\..\..\addons\ofxAssimpModelLoader\libs\assimp\include\assimp;..\..\..\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler;..\..\..\addons\ofxAssimpModelLoader\libs\assimp\lib;..\..\..\addons\ofxAssimpModelLoader\libs\assimp\lib\emscripten;..\..\..\addons\ofxAssimpModelLoader\libs\assimp\lib\vs;..\..\..\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\Win32;..\..\..\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64;..\..\..\addons\ofxAssimpModelLoader\libs\assimp\license;..\..\..\addons\ofxAssimpModelLoader\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxAnimatable\src;..\..\..\addons\ofxDSHapVideoPlayer\libs;..\..\..\addons\ofxDSHapVideoPlayer\libs\External;..\..\..\addons\ofxDSHapVideoPlayer\libs\External\DirectShow;..\..\..\addons\ofxDSHapVideoPlayer\libs\External\DirectShow\BaseClasses;..\..\..\addons\ofxDSHapVideoPlayer\libs\External\snappy;..\..\..\addons\ofxDSHapVideoPlayer\src;..\..\..\addons\ofxMidi\libs;..\..\..\addons\ofxMidi\libs\pgmidi;..\..\..\addons\ofxMidi\libs\rtmidi;..\..\..\addons\ofxMidi\src;..\..\..\addons\ofxMidi\src\desktop;..\..\..\addons\ofxMidi\src\ios;..\..\..\addons\ofxPostProcessing\src;..\..\..\addons\ofxTrueTypeFontUC\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxLayerMask\src;..\..\..\addons\ofxXmlSettings\src;.\src\drawer\;.\src\shaderVoronoi\;..\..\..\addons\ofxAssimpModelLoader\libs;..\..\..\addons\ofxAssimpModelLoader\libs\assimp;..\..\..\addons\ofxAssimpModelLoader\libs\assimp\include;..\..\..\addons\ofxAssimpModelLoader\libs\assimp\include\assimp;..\..\..\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler;..\..\..\addons\ofxAssimpModelLoader\libs\assimp\lib;..\..\..\addons\ofxAssimpModelLoader\libs\assimp\lib\emscripten;..\..\..\addons\ofxAssimpModelLoader\libs\assimp\lib\vs;..\..\..\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\Win32;..\..\..\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64;..\..\..\addons\ofxAssimpModelLoader\libs\assimp\license;..\..\..\addons\ofxAssimpModelLoader\src;.\src\singleton\</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
@@ -180,7 +180,6 @@
     <ClCompile Include="src\drawer\DClouds.cpp" />
     <ClCompile Include="src\drawer\DEgyptianVertical.cpp" />
     <ClCompile Include="src\drawer\DLife.cpp" />
-    <ClCompile Include="src\drawer\DMandelbrotSet.cpp" />
     <ClCompile Include="src\drawer\DPortrait.cpp" />
     <ClCompile Include="src\drawer\DRomanCircle.cpp" />
     <ClCompile Include="src\drawer\DStainedGlass.cpp" />
@@ -268,8 +267,17 @@
     <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxml.cpp" />
     <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxmlerror.cpp" />
     <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxmlparser.cpp" />
-    <ClCompile Include="src\postFilter.cpp" />
+    <ClCompile Include="src\ofDisplayerApp.cpp" />
+    <ClCompile Include="src\ofViewerApp.cpp" />
     <ClCompile Include="src\shaderVoronoi\shaderVoronoi.cpp" />
+    <ClCompile Include="src\singleton\camCtrl.cpp" />
+    <ClCompile Include="src\singleton\camUnit.cpp" />
+    <ClCompile Include="src\singleton\ctrlMap.cpp" />
+    <ClCompile Include="src\singleton\midiCtrl.cpp" />
+    <ClCompile Include="src\singleton\postFilter.cpp" />
+    <ClCompile Include="src\singleton\displayMgr.cpp" />
+    <ClCompile Include="src\singleton\displayUnit.cpp" />
+    <ClCompile Include="src\singleton\videoMgr.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\ai_assert.h" />
@@ -320,7 +328,6 @@
     <ClInclude Include="src\drawer\DClouds.h" />
     <ClInclude Include="src\drawer\DEgyptianVertical.h" />
     <ClInclude Include="src\drawer\DLife.h" />
-    <ClInclude Include="src\drawer\DMandelbrotSet.h" />
     <ClInclude Include="src\drawer\DPortrait.h" />
     <ClInclude Include="src\drawer\drawer.h" />
     <ClInclude Include="src\drawer\drawParameter.h" />
@@ -422,8 +429,17 @@
     <ClInclude Include="..\..\..\addons\ofxTrueTypeFontUC\src\ofxTrueTypeFontUC.h" />
     <ClInclude Include="..\..\..\addons\ofxXmlSettings\src\ofxXmlSettings.h" />
     <ClInclude Include="..\..\..\addons\ofxXmlSettings\libs\tinyxml.h" />
-    <ClInclude Include="src\postFilter.h" />
+    <ClInclude Include="src\ofDisplayerApp.h" />
+    <ClInclude Include="src\ofViewerApp.h" />
     <ClInclude Include="src\shaderVoronoi\shaderVoronoi.h" />
+    <ClInclude Include="src\singleton\camCtrl.h" />
+    <ClInclude Include="src\singleton\camUnit.h" />
+    <ClInclude Include="src\singleton\ctrlMap.h" />
+    <ClInclude Include="src\singleton\midiCtrl.h" />
+    <ClInclude Include="src\singleton\postFilter.h" />
+    <ClInclude Include="src\singleton\displayMgr.h" />
+    <ClInclude Include="src\singleton\displayUnit.h" />
+    <ClInclude Include="src\singleton\videoMgr.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="$(OF_ROOT)\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">

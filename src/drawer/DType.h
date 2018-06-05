@@ -12,7 +12,6 @@ enum eDType
 	eDPortrait,
 	//?
 	eDTail,
-	eDMandelbrotSet, //Tree
 	eDLife,
 	eDTypeNum
 };

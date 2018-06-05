@@ -9,4 +9,3 @@
 #include "DPortrait.h"
 #include "DTail.h"
 #include "DLife.h"
-#include "DMandelbrotSet.h"
