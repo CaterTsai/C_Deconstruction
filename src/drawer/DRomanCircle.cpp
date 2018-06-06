@@ -17,7 +17,7 @@ DRomanCircle::circleUnit::circleUnit(string texPath, float r, float depth, float
 		auto length = depth * asp;
 		float delta = (length / (r * TWO_PI)) * 360.0f;
 		_mesh.clear();
-
+		
 		ofVec2f v(0, -1);
 
 		for (int i = 0; i < size; i++)
@@ -148,7 +148,7 @@ void DRomanCircle::draw()
 //------------------------------------
 void DRomanCircle::start()
 {
-	initMesh();
+	//initMesh();
 	_isStart = true;
 
 }
@@ -187,7 +187,7 @@ void DRomanCircle::initMesh()
 	circleUnit newCircle4(("pattern/pattern_7.png"), r, 25, rand() % 20 + 20);
 	r += 25;
 
-	circleUnit newCircle5(("pattern/pattern/pattern_5.png"), r, 40, rand() % 30 + 30);
+	circleUnit newCircle5(("pattern//pattern_5.png"), r, 40, rand() % 30 + 30);
 	r += 40;
 
 	circleUnit newCircle6(("pattern/pattern_4.png"), r, 45, rand() % 30 + 30);

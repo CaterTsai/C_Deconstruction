@@ -34,7 +34,8 @@ public:
 	DRomanCircle()
 		:DBase(eDRomanCircle)
 	{
-		ofDisableArbTex();	
+		ofDisableArbTex();
+		initMesh();
 	}
 
 	void update(float delta) override;

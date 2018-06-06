@@ -19,7 +19,7 @@ enum ePostFilterType
 class postFilter
 {
 public:
-	void init(int index, int w, int h);
+	void init(int index, int w, int h, bool arb);
 	void filterEnable(int index, ePostFilterType type);
 	void filterEnable(int index, ePostFilterType type, bool isEnable);
 	void disableAll();

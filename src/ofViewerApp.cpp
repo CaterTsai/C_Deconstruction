@@ -6,15 +6,21 @@ void ofViewerApp::setup()
 {
 	//Singleton
 	displayMgr::GetInstance()->setup("config/_displayConfig.xml");
-	//postFilter::GetInstance()->init(200, 200, cViewCanvasWidth, cViewCanvasWidth);
+	postFilter::GetInstance()->init(0, 1920, 1080, true);
+	postFilter::GetInstance()->init(1, 300, 300, false);
+	postFilter::GetInstance()->init(2, 1024, 1024, false);
 	//postFilter::GetInstance()->_squarePost.setFlip(false);
 	midiCtrl::GetInstance()->init();
 	midiCtrl::GetInstance()->addListener(this);
 	
 	initVideo();
 	initScene();
-	
+	_scenceMgr[_nowScence]->start();
 	ofSetFrameRate(60);
+
+
+	_layer.setup(1920, 1080);
+	_layer.newLayer();
 
 	_mainTimer = ofGetElapsedTimef();
 }
@@ -41,8 +47,21 @@ void ofViewerApp::draw()
 
 	displayMgr::GetInstance()->displayEachUnit(ofVec2f(0, 500), 200);
 
-	//Debug
-	camCtrl::GetInstance()->displayPos(ofVec2f(0, 45));
+	_layer.beginLayer();
+	ofPushStyle();
+	ofSetColor(255, 0, 0);
+	ofDrawRectangle(0, 0, 1920, 1080);
+	ofPopStyle();
+	_layer.endLayer();
+
+	_layer.beginMask();
+	ofPushStyle();
+	ofClear(0);
+	ofSetColor(ofColor::white);
+	ofDrawRectangle(0, 0, 1920, 1080);
+	ofPopStyle();
+	_layer.endMask();
+	_layer.draw();
 }
 
 //----------------------------------
@@ -96,7 +115,7 @@ void ofViewerApp::initScene()
 	_scenceMgr.push_back(ofPtr<SM04>(new SM04()));
 	_scenceMgr.push_back(ofPtr<SEncore>(new SEncore()));
 
-	_nowScence = eSIdle;
+	_nowScence = eSB01;
 }
 
 //----------------------------------

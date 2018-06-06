@@ -1,9 +1,9 @@
 #include "postFilter.h"
 
 //-------------------------------------
-void postFilter::init(int index, int w, int h)
+void postFilter::init(int index, int w, int h, bool arb)
 {
-	_postMgr[index].init(w, h);
+	_postMgr[index].init(w, h, arb);
 
 	_postMgr[index].createPass<BloomPass>()->setEnabled(false);
 	_postMgr[index].createPass<BloomPass>()->setEnabled(false);
@@ -15,7 +15,7 @@ void postFilter::init(int index, int w, int h)
 	_postMgr[index].createPass<RGBShiftPass>()->setEnabled(false);
 	_postMgr[index].createPass<ToonPass>()->setEnabled(false);
 
-	_postMgr[index].setFlip(true);
+	_postMgr[index].setFlip(false);
 
 }
 

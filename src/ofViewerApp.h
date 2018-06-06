@@ -53,4 +53,7 @@ private:
 	};
 	list<midiCtrlData> _midiQueue;
 
+
+
+	ofxLayerMask _layer;
 };

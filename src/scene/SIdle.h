@@ -10,22 +10,21 @@ public:
 	{}
 
 	void update(float delta) override {}
-	void draw() override 
+	void draw() override {};
+	void drawMsg(ofVec2f pos) override 
 	{
-		displayMgr::GetInstance()->updateOnUnitBegin(eFront);
-		camCtrl::GetInstance()->getCanvasCam().begin();
-		ofSetColor(255, 0, 0);
-		ofDrawCircle(0, 0, 100);
-		camCtrl::GetInstance()->getCanvasCam().end();
-		displayMgr::GetInstance()->updateOnUnitEnd(eFront);
+		ostringstream ss;
+		ss << "SIdel";
 
+		ofDrawBitmapStringHighlight(ss.str(), pos);
 	};
-	void drawMsg(ofVec2f pos) override {};
 	void start() override 
 	{
-		camCtrl::GetInstance()->_canvasCam.reset();
 	};
-	void stop() override {};
+	void stop() override 
+	{
+		postFilter::GetInstance()->disableAll();
+	};
 	void control(eCtrlType ctrl, int value = cMidiButtonPress) override {};
 	string getSceneName() { return "SIdle"; }
 

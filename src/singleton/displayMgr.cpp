@@ -132,6 +132,12 @@ void displayMgr::saveConfig(string configName)
 }
 
 //------------------------------
+ofRectangle displayMgr::getSize(int unitID)
+{
+	return _displayList[unitID].getSize();
+}
+
+//------------------------------
 void displayMgr::init(string configName)
 {
 	ofxXmlSettings xml;

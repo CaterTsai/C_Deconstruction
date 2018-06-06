@@ -18,6 +18,8 @@ public:
 	void clearAllDisplay();
 
 	void saveConfig(string configName);
+
+	ofRectangle getSize(int unitID);
 private:
 	void init(string configName);
 private:
