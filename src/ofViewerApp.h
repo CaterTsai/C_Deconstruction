@@ -12,9 +12,9 @@
 class ofViewerApp : public ofBaseApp, public ofxMidiListener {
 
 public:
-
 	ofViewerApp()
-	{}
+	{
+	}
 
 	void setup();
 	void update();
@@ -54,6 +54,5 @@ private:
 	list<midiCtrlData> _midiQueue;
 
 
-
-	ofxLayerMask _layer;
+	DCyclicCA _dca;
 };

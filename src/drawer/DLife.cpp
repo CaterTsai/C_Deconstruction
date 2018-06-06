@@ -144,7 +144,7 @@ void DLife::draw()
 	ofPushStyle();
 	ofSetColor(255);
 	_canvas.getTextureReference().bind();
-	//ofDrawSphere(500, 500, 50);
+	ofDrawSphere(500, 500, 50);
 	_sphere.draw();
 	_canvas.getTextureReference().unbind();
 	ofPopStyle();

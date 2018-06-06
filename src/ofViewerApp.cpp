@@ -18,9 +18,8 @@ void ofViewerApp::setup()
 	_scenceMgr[_nowScence]->start();
 	ofSetFrameRate(60);
 
-
-	_layer.setup(1920, 1080);
-	_layer.newLayer();
+	_dca.set(1, 1, 14, DCyclicCA::eNeighbouring::eVonNeumann);
+	_dca.start();
 
 	_mainTimer = ofGetElapsedTimef();
 }
@@ -36,6 +35,8 @@ void ofViewerApp::update()
 	camCtrl::GetInstance()->update(delta);
 	_scenceMgr[_nowScence]->update(delta);
 
+	_dca.update(delta);
+
 	ofSetWindowTitle(ofToString(ofGetFrameRate()));
 }
 
@@ -47,21 +48,7 @@ void ofViewerApp::draw()
 
 	displayMgr::GetInstance()->displayEachUnit(ofVec2f(0, 500), 200);
 
-	_layer.beginLayer();
-	ofPushStyle();
-	ofSetColor(255, 0, 0);
-	ofDrawRectangle(0, 0, 1920, 1080);
-	ofPopStyle();
-	_layer.endLayer();
-
-	_layer.beginMask();
-	ofPushStyle();
-	ofClear(0);
-	ofSetColor(ofColor::white);
-	ofDrawRectangle(0, 0, 1920, 1080);
-	ofPopStyle();
-	_layer.endMask();
-	_layer.draw();
+	_dca.draw(0, 0, 500, 500);
 }
 
 //----------------------------------
@@ -115,7 +102,7 @@ void ofViewerApp::initScene()
 	_scenceMgr.push_back(ofPtr<SM04>(new SM04()));
 	_scenceMgr.push_back(ofPtr<SEncore>(new SEncore()));
 
-	_nowScence = eSB01;
+	_nowScence = eSIdle;
 }
 
 //----------------------------------

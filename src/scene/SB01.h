@@ -12,7 +12,7 @@ public:
 
 	void update(float delta) override 
 	{
-		_drc.update(delta);
+		//_drc.update(delta);
 
 		_layer.beginLayer();
 		ofPushStyle();
@@ -54,19 +54,19 @@ public:
 		_layer.newLayer();
 
 		//_drc.start();
-		_drc.trigger(0);
-		_drc.trigger(1);
-		_drc.trigger(2);
+		//_drc.trigger(0);
+		//_drc.trigger(1);
+		//_drc.trigger(2);
 	};
 	void stop() override 
 	{
-		_drc.stop();
+		//_drc.stop();
 	};
 	void control(eCtrlType ctrl, int value = cMidiButtonPress) override {};
 	string getSceneName() { return "SB01"; }
 
 private:
-	DRomanCircle _drc;
+	//DRomanCircle _drc;
 	ofxLayerMask _layer;
 	ofRectangle _displayRect;
 };

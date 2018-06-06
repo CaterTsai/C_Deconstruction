@@ -104,6 +104,7 @@
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
       <AdditionalDependencies>%(AdditionalDependencies);assimp.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories);..\..\..\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\Win32</AdditionalLibraryDirectories>
+      <LargeAddressAware>false</LargeAddressAware>
     </Link>
     <PostBuildEvent />
   </ItemDefinitionGroup>
@@ -146,6 +147,7 @@
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
       <AdditionalDependencies>%(AdditionalDependencies);assimp.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories);..\..\..\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\Win32</AdditionalLibraryDirectories>
+      <LargeAddressAware>false</LargeAddressAware>
     </Link>
     <PostBuildEvent />
   </ItemDefinitionGroup>
@@ -178,6 +180,7 @@
     <ClCompile Include="..\..\..\addons\ofxLayerMask\src\ofxLayerMask.cpp" />
     <ClCompile Include="src\drawer\DBreeze.cpp" />
     <ClCompile Include="src\drawer\DClouds.cpp" />
+    <ClCompile Include="src\drawer\DCyclicCA.cpp" />
     <ClCompile Include="src\drawer\DEgyptianVertical.cpp" />
     <ClCompile Include="src\drawer\DLife.cpp" />
     <ClCompile Include="src\drawer\DPortrait.cpp" />
@@ -326,6 +329,7 @@
     <ClInclude Include="src\drawer\DBase.h" />
     <ClInclude Include="src\drawer\DBreeze.h" />
     <ClInclude Include="src\drawer\DClouds.h" />
+    <ClInclude Include="src\drawer\DCyclicCA.h" />
     <ClInclude Include="src\drawer\DEgyptianVertical.h" />
     <ClInclude Include="src\drawer\DLife.h" />
     <ClInclude Include="src\drawer\DPortrait.h" />

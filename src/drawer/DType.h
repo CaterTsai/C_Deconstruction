@@ -13,5 +13,6 @@ enum eDType
 	//?
 	eDTail,
 	eDLife,
+	eDCyclicCA,
 	eDTypeNum
 };

@@ -322,6 +322,9 @@
     <ClCompile Include="src\singleton\displayMgr.cpp">
       <Filter>src\singleton\display</Filter>
     </ClCompile>
+    <ClCompile Include="src\drawer\DCyclicCA.cpp">
+      <Filter>src\drawer\DElement</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -1006,6 +1009,9 @@
     </ClInclude>
     <ClInclude Include="src\scene\sceneMgr.h">
       <Filter>src\sceneMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="src\drawer\DCyclicCA.h">
+      <Filter>src\drawer\DElement</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
