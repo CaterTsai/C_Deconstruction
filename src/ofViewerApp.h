@@ -53,6 +53,4 @@ private:
 	};
 	list<midiCtrlData> _midiQueue;
 
-
-	DCyclicCA _dca;
 };

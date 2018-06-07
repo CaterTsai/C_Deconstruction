@@ -4,6 +4,7 @@
 #pragma region Basic
 void ofViewerApp::setup()
 {
+
 	//Singleton
 	displayMgr::GetInstance()->setup("config/_displayConfig.xml");
 	postFilter::GetInstance()->init(0, 1920, 1080, true);
@@ -18,8 +19,6 @@ void ofViewerApp::setup()
 	_scenceMgr[_nowScence]->start();
 	ofSetFrameRate(60);
 
-	_dca.set(1, 1, 14, DCyclicCA::eNeighbouring::eVonNeumann);
-	_dca.start();
 
 	_mainTimer = ofGetElapsedTimef();
 }
@@ -35,7 +34,6 @@ void ofViewerApp::update()
 	camCtrl::GetInstance()->update(delta);
 	_scenceMgr[_nowScence]->update(delta);
 
-	_dca.update(delta);
 
 	ofSetWindowTitle(ofToString(ofGetFrameRate()));
 }
@@ -46,9 +44,16 @@ void ofViewerApp::draw()
 	ofSetBackgroundColor(0);
 	_scenceMgr[_nowScence]->draw();
 
-	displayMgr::GetInstance()->displayEachUnit(ofVec2f(0, 500), 200);
+	displayMgr::GetInstance()->displayEachUnit(ofVec2f(0, 500), 250);
 
-	_dca.draw(0, 0, 500, 500);
+	if (_showMsg)
+	{
+		ofDrawBitmapStringHighlight("Scence :" + _scenceMgr[_nowScence]->getSceneName(), ofVec2f(0, 65));
+		//Debug
+		//camCtrl::GetInstance()->displayPos(ofVec2f(0, 45));
+		_scenceMgr[_nowScence]->drawMsg(ofVec2f(0, 110));
+	}
+
 }
 
 //----------------------------------
@@ -73,6 +78,151 @@ void ofViewerApp::keyPressed(int key)
 //----------------------------------
 void ofViewerApp::control(eCtrlType ctrl, int value)
 {
+	switch (ctrl)
+	{
+	case eCtrl_Start:
+	{
+		if (value == cMidiButtonPress)
+		{
+			_scenceMgr[_nowScence]->start();
+			_isStart = true;
+		}
+		break;
+	}
+	case eCtrl_Stop:
+	{
+		if (value == cMidiButtonPress)
+		{
+			_scenceMgr[_nowScence]->stop();
+			_isStart = false;
+			displayMgr::GetInstance()->clearAllDisplay();
+		}
+		break;
+	}
+	case eCtrl_NextScence:
+	{
+		if (value == cMidiButtonPress)
+		{
+			camCtrl::GetInstance()->reset();
+			postFilter::GetInstance()->disableAll();
+			auto nextScence = (eSType)((_nowScence + 1) % eSTypeNum);
+			if (_isStart)
+			{
+				_scenceMgr[_nowScence]->stop();
+				_scenceMgr[nextScence]->start();
+			}
+			_nowScence = nextScence;
+
+			displayMgr::GetInstance()->clearAllDisplay();
+		}
+
+		break;
+	}
+	case eCtrl_PrevScence:
+	{
+		if (value == cMidiButtonPress)
+		{
+			camCtrl::GetInstance()->reset();
+			postFilter::GetInstance()->disableAll();
+			auto nextScence = (eSType)((_nowScence - 1) % eSTypeNum);
+			if (nextScence < 0)
+			{
+				nextScence = (eSType)(eSTypeNum - 1);
+			}
+			if (_isStart)
+			{
+				_scenceMgr[_nowScence]->stop();
+				_scenceMgr[nextScence]->start();
+			}
+			_nowScence = nextScence;
+			displayMgr::GetInstance()->clearAllDisplay();
+			
+		}
+		break;
+	}
+#pragma region Filter
+	case eCtrl_DisableAllFilter:
+	{
+		if (value == cMidiButtonPress)
+		{
+			postFilter::GetInstance()->disableAll();
+		}
+		break;
+	}
+	case eCtrl_Filter1:
+	{
+		if (value == cMidiButtonPress)
+		{
+			postFilter::GetInstance()->filterEnable(ePostFilterType::ePostBloom);
+		}
+		break;
+	}
+	case eCtrl_Filter2:
+	{
+		if (value == cMidiButtonPress)
+		{
+			postFilter::GetInstance()->filterEnable(ePostFilterType::ePostBloomTwo);
+		}
+		break;
+	}
+	case eCtrl_Filter3:
+	{
+		if (value == cMidiButtonPress)
+		{
+			postFilter::GetInstance()->filterEnable(ePostFilterType::ePostEdge);
+		}
+		break;
+	}
+	case eCtrl_Filter4:
+	{
+		if (value == cMidiButtonPress)
+		{
+			postFilter::GetInstance()->filterEnable(ePostFilterType::ePostKaleidoscope);
+		}
+		break;
+	}
+	case eCtrl_Filter5:
+	{
+		if (value == cMidiButtonPress)
+		{
+			postFilter::GetInstance()->filterEnable(ePostFilterType::ePostNoiseWarp);
+		}
+		break;
+	}
+	case eCtrl_Filter6:
+	{
+		if (value == cMidiButtonPress)
+		{
+			postFilter::GetInstance()->filterEnable(ePostFilterType::ePostPixel);
+		}
+		break;
+	}
+	case eCtrl_Filter7:
+	{
+		if (value == cMidiButtonPress)
+		{
+			postFilter::GetInstance()->filterEnable(ePostFilterType::ePostRGBShift);
+		}
+		break;
+	}
+	case eCtrl_Filter8:
+	{
+		if (value == cMidiButtonPress)
+		{
+			postFilter::GetInstance()->filterEnable(ePostFilterType::ePostToon);
+		}
+		break;
+	}
+	case eCtrl_Filter9:
+	{
+		if (value == cMidiButtonPress)
+		{
+			postFilter::GetInstance()->filterEnable(ePostFilterType::ePostZoomBlur);
+		}
+		break;
+	}
+}
+#pragma endregion
 }
 
 #pragma endregion
@@ -102,7 +252,7 @@ void ofViewerApp::initScene()
 	_scenceMgr.push_back(ofPtr<SM04>(new SM04()));
 	_scenceMgr.push_back(ofPtr<SEncore>(new SEncore()));
 
-	_nowScence = eSIdle;
+	_nowScence = eSB02;
 }
 
 //----------------------------------

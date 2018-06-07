@@ -2,9 +2,12 @@
 
 #include "../constParameter.h"
 
+//DStainedGlass
 const int cVoronoiSeedNum = 200;
-const int cVoronoiWidth = 512;
-const int cVoronoiHeight = 512;
+const int cVoronoiWidth = 400;
+const int cVoronoiHeight = 400;
+const float cStainedRotateMin = 0.0f;
+const float cStainedRotateMax = 180.0f;
 
 const int cEgyptianFontSize = 120;
 const int cEgyptianUnicodePrecode = 55308;

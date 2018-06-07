@@ -36,6 +36,7 @@ public:
 	{
 		ofDisableArbTex();
 		initMesh();
+		ofEnableArbTex();
 	}
 
 	void update(float delta) override;

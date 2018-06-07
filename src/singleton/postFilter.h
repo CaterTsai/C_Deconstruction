@@ -20,8 +20,8 @@ class postFilter
 {
 public:
 	void init(int index, int w, int h, bool arb);
-	void filterEnable(int index, ePostFilterType type);
-	void filterEnable(int index, ePostFilterType type, bool isEnable);
+	void filterEnable(ePostFilterType type);
+	void filterEnable(ePostFilterType type, bool isEnable);
 	void disableAll();
 private:
 	bool _isInit;

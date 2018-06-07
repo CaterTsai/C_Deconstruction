@@ -63,3 +63,7 @@ enum eVideoType : int
 	, eVideoMonika
 	, eVideoNum
 };
+
+//-------------------------
+//Scene
+const ofVec2f cSB02_Pos(480, 400);

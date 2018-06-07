@@ -20,16 +20,24 @@ void postFilter::init(int index, int w, int h, bool arb)
 }
 
 //-------------------------------------
-void postFilter::filterEnable(int index, ePostFilterType type)
+void postFilter::filterEnable(ePostFilterType type)
 {
-	auto isEnable = !_postMgr[index][(int)type]->getEnabled();
-	_postMgr[index][(int)type]->setEnabled(isEnable);
+	for (int i = 0; i < _postMgr.size(); i++)
+	{
+		auto isEnable = !_postMgr[i][(int)type]->getEnabled();
+		_postMgr[i][(int)type]->setEnabled(isEnable);
+	}
+	
 }
 
 //-------------------------------------
-void postFilter::filterEnable(int index, ePostFilterType type, bool isEnable)
+void postFilter::filterEnable(ePostFilterType type, bool isEnable)
 {
-	_postMgr[index][(int)type]->setEnabled(isEnable);
+	for (int i = 0; i < _postMgr.size(); i++)
+	{
+		_postMgr[i][(int)type]->setEnabled(isEnable);
+	}
+	
 }
 
 //-------------------------------------

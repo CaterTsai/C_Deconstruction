@@ -90,9 +90,14 @@ void DCyclicCA::createWorld()
 void DCyclicCA::initPattern()
 {
 	_colorSet.clear();
+	ofColor color(34, 80, 89);
+	float b = color.getBrightness();
+	float IntB = (255.0f - b) / _stateNum;
 	for (int i = 0; i < _stateNum; i++)
 	{
-		_colorSet.push_back(ofColor(ofRandom(255), ofRandom(255), ofRandom(255)));
+		_colorSet.push_back(color);
+		color.setBrightness(b + IntB * i);
+		
 	}
 }
 

@@ -24,5 +24,5 @@ enum eSType : int
 	,eSM03
 	,eSM04
 	,eSEncore
-	,eSNum
+	, eSTypeNum
 };

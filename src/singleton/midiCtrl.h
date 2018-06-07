@@ -68,7 +68,8 @@ enum eMidiCtrlCode : int
 };
 
 const int cMidiButtonPress = 127;
-
+const int cMidiValueMin = 0;
+const int cMidiValueMax = 127;
 class midiCtrl
 {
 public:

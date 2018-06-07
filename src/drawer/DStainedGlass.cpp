@@ -96,14 +96,14 @@ void DStainedGlass::update(float delta)
 }
 
 //-----------------------------------------
-void DStainedGlass::draw()
+void DStainedGlass::draw(int x, int y, int z)
 {
 	CHECK_START();
 
 	ofPushStyle();
 	ofSetColor(255);
 	ofPushMatrix();
-	ofTranslate(_masker.getWidth() * 0.5, _masker.getHeight() * 0.5);
+	ofTranslate(x, y);
 	if (_maskMgr[_maskIdx].getType() == eMaskType::eMaskCircle)
 	{
 		ofRotateZ(_rotate);
@@ -118,6 +118,8 @@ void DStainedGlass::start()
 {
 	initVoronoi();
 	_maskIdx = 0;
+	_rotate = 0.0f;
+	_rotateV = 0.0f;
 	_isStart = true;
 }
 
@@ -140,9 +142,9 @@ void DStainedGlass::trigger(int key)
 }
 
 //-----------------------------------------
-void DStainedGlass::startRotate(float rv)
+void DStainedGlass::setRotateV(float rv)
 {
-	_rotate = 0.0f;
+	
 	_rotateV = rv;
 }
 
@@ -163,7 +165,7 @@ void DStainedGlass::initMask()
 //-----------------------------------------
 void DStainedGlass::initVoronoi()
 {
-	_voronoi.setup(512, 512);
+	_voronoi.setup(cVoronoiWidth, cVoronoiHeight);
 	setSeed();
 }
 

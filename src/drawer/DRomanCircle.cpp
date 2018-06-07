@@ -142,13 +142,12 @@ void DRomanCircle::draw()
 	{
 		iter.draw();
 	}
-
 }
 
 //------------------------------------
 void DRomanCircle::start()
 {
-	//initMesh();
+
 	_isStart = true;
 
 }
@@ -195,7 +194,6 @@ void DRomanCircle::initMesh()
 
 	circleUnit newCircle7(("pattern/pattern_3.png"), r, 30, rand() % 30 + 35);
 	r += 30;
-
 	_circleList.push_back(newCircle1);
 	_circleList.push_back(newCircle2);
 	_circleList.push_back(newCircle3);

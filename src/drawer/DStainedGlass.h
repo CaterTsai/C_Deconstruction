@@ -45,13 +45,13 @@ public:
 	}
 
 	void update(float delta) override;
-	void draw() override;
+	void draw(int x, int y, int z=0) override;
 
 	void start() override;
 	void stop() override;
 
 	void trigger(int key) override;
-	void startRotate(float rv);
+	void setRotateV(float rv);
 
 private:
 	void initMask();
