@@ -10,7 +10,7 @@ void DTemple::lightUnit::update(float delta)
 	}
 	_animMove.update(delta);
 	_animColor.update(delta);
-	_light.setDiffuseColor(_animColor.getCurrentColor());
+	//_light.setDiffuseColor(_animColor.getCurrentColor());
 	_light.setPosition(_animMove.getCurrentPosition());
 
 	if (_isOn && _animColor.hasFinishedAnimating() && _animColor.getPercentDone() == 1.0f)

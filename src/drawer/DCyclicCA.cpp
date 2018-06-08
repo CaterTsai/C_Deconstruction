@@ -70,6 +70,12 @@ void DCyclicCA::set(int r, int t, int s, eNeighbouring type)
 }
 
 //--------------------------------
+void DCyclicCA::setBaseColor(ofColor baseColor)
+{
+	_baseColor = baseColor;
+}
+
+//--------------------------------
 void DCyclicCA::createWorld()
 {
 	_nowGeneration = _worldA.begin();
@@ -90,14 +96,13 @@ void DCyclicCA::createWorld()
 void DCyclicCA::initPattern()
 {
 	_colorSet.clear();
-	ofColor color(34, 80, 89);
-	float b = color.getBrightness();
-	float IntB = (255.0f - b) / _stateNum;
+	ofColor color = _baseColor;
+
+	float IntG = 255.0f / _stateNum;
 	for (int i = 0; i < _stateNum; i++)
 	{
 		_colorSet.push_back(color);
-		color.setBrightness(b + IntB * i);
-		
+		color.g += IntG;
 	}
 }
 

@@ -59,7 +59,7 @@ public:
 		:DBase(eDBreeze)
 		, _autoEmitter(false)
 		, _emitterNum(1)
-		, _type(ePTypeRandom)
+		, _type(ePType2DRandom)
 	{
 		_color = cBreezBaseColor;
 	}

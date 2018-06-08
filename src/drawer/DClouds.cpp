@@ -37,7 +37,7 @@ void DClouds::cloudUnit::set(ofColor c)
 {
 	_eType = eCloudPartical;
 	_c = c;
-	_c.set(c.r, c.g, c.b, ofRandom(50, 150));
+	_c.set(c.r, c.g, c.b, ofRandom(180, 220));
 	_size = ofRandom(5, 50);
 	init();
 }
@@ -66,12 +66,12 @@ void DClouds::cloudUnit::init()
 	{
 		if (_eType == eCloudImg)
 		{
-			sx = ofGetWidth() + ofRandom(0, cCloudImageBaseWidth * _size);
+			sx = cWindowWidth + ofRandom(0, cCloudImageBaseWidth * _size);
 			tx = -ofRandom(0, cCloudImageBaseWidth * 0.5 * _size);
 		}
 		else
 		{
-			sx = ofGetWidth() + ofRandom(-200, 200);
+			sx = cWindowWidth + ofRandom(-200, 200);
 			tx = ofRandom(-200, 200);
 		}
 	}
@@ -80,20 +80,20 @@ void DClouds::cloudUnit::init()
 		if (_eType == eCloudImg)
 		{
 			sx = -ofRandom(0, cCloudImageBaseWidth * _size);
-			tx = ofGetWidth() + ofRandom(0, cCloudImageBaseWidth * 0.5 * _size);
+			tx = cWindowWidth + ofRandom(0, cCloudImageBaseWidth * 0.5 * _size);
 		}
 		else
 		{
 			sx = ofRandom(-200, 200);
-			tx = ofGetWidth() + ofRandom(-200, 200);
+			tx = cWindowWidth + ofRandom(-200, 200);
 		}
 	}
-	int y = ofRandom(ofGetHeight() * 0.65, ofGetHeight());
+	int y = ofRandom(cWindowHeight * 0.65, cWindowHeight);
 	_source.set(sx, y);
 	_target.set(tx, y);
 
 	_anim = 0.0f;
-	_animV = 1.0f / ofRandom(60, 100);
+	_animV = 1.0f / ofRandom(30, 80);
 }
 #pragma endregion
 
@@ -158,8 +158,9 @@ void DClouds::start()
 {
 	_isStart = true;
 	ofSetCircleResolution(60);
-	_pTimer = _pEmmiterT = cCloudPEmitterSlow;
-	_cTimer = _cEmmiterT = cCloudCEmitterSlow;
+	_pEmmiterT = cCloudPEmitterSlow;
+	_cEmmiterT = cCloudCEmitterSlow;
+	_pTimer = _cTimer = 0;
 	_color = cCloudBaseColor;
 }
 

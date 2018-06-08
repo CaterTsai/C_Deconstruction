@@ -44,12 +44,8 @@ void ctrlMap::initMidi2Ctrl()
 	midi2Ctrl[eMidiNextBtn] = eCtrl_NextScence;
 	midi2Ctrl[eMidiPrevBtn] = eCtrl_PrevScence;
 
-	midi2Ctrl[eMidiKnob8] = eCtrl_ChangeBPM;
-	midi2Ctrl[eMidiSlider6] = eCtrl_ChangeColorR;
-	midi2Ctrl[eMidiSlider7] = eCtrl_ChangeColorG;
-	midi2Ctrl[eMidiSlider8] = eCtrl_ChangeColorB;
-	midi2Ctrl[eMidiTriggerS5] = eCtrl_SetChangeColor;
-	midi2Ctrl[eMidiKnob7] = eCtrl_ChangeProjectAlpha;
+	
+	midi2Ctrl[eMidiKnob8] = eCtrl_ChangeProjectAlpha;
 
 	midi2Ctrl[eMidiTriggerS6] = eCtrl_Filter1;
 	midi2Ctrl[eMidiTriggerS7] = eCtrl_Filter2;
@@ -63,22 +59,26 @@ void ctrlMap::initMidi2Ctrl()
 	midi2Ctrl[eMidiTrackPrev] = eCtrl_DisableAllFilter;
 	midi2Ctrl[eMidiTrackNext] = eCtrl_ChangeFilterTarget;
 
-	midi2Ctrl[eMidiForward] = eCtrl_DisplayEach;
-	midi2Ctrl[eMidiBackward] = eCtrl_DisplayGroup;
-	midi2Ctrl[eMidiSetBtn] = eCtrl_ViewNext;
+	
 	midi2Ctrl[eMidiTriggerS1] = eCtrl_ViewTrigger1;
 	midi2Ctrl[eMidiTriggerS2] = eCtrl_ViewTrigger2;
 	midi2Ctrl[eMidiTriggerS3] = eCtrl_ViewTrigger3;
-	midi2Ctrl[eMidiTriggerM1] = eCtrl_ViewTrigger4;
-	midi2Ctrl[eMidiTriggerM2] = eCtrl_ViewTrigger5;
-	midi2Ctrl[eMidiTriggerM3] = eCtrl_ViewTrigger6;
-	midi2Ctrl[eMidiTriggerR1] = eCtrl_ViewTrigger7;
-	midi2Ctrl[eMidiTriggerR2] = eCtrl_ViewTrigger8;
-	midi2Ctrl[eMidiTriggerR3] = eCtrl_ViewTrigger9;
+	midi2Ctrl[eMidiTriggerS4] = eCtrl_ViewTrigger4;
 
-	midi2Ctrl[eMidiSlider1] = eCtrl_ViewSlider1;
-	midi2Ctrl[eMidiSlider2] = eCtrl_ViewSlider2;
-	midi2Ctrl[eMidiSlider3] = eCtrl_ViewSlider3;
+	midi2Ctrl[eMidiTriggerM1] = eCtrl_ViewTrigger5;
+	midi2Ctrl[eMidiTriggerM2] = eCtrl_ViewTrigger6;
+	midi2Ctrl[eMidiTriggerM3] = eCtrl_ViewTrigger7;
+	midi2Ctrl[eMidiTriggerM4] = eCtrl_ViewTrigger8;
+
+	midi2Ctrl[eMidiTriggerR1] = eCtrl_ViewTrigger9;
+	midi2Ctrl[eMidiTriggerR2] = eCtrl_ViewTrigger10;
+	midi2Ctrl[eMidiTriggerR3] = eCtrl_ViewTrigger11;
+	midi2Ctrl[eMidiTriggerR4] = eCtrl_ViewTrigger12;
+
+	midi2Ctrl[eMidiSlider1] = eCtrl_ViewKnob1;
+	midi2Ctrl[eMidiSlider2] = eCtrl_ViewKnob2;
+	midi2Ctrl[eMidiSlider3] = eCtrl_ViewKnob3;
+
 }
 
 //--------------------------------------------------------------

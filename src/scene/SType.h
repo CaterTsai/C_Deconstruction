@@ -14,7 +14,6 @@ enum eSType : int
 	,eSC04
 	,eSRIntro
 	,eSR01
-	,eSR02
 	,eSR03
 	,eSR04
 	,eSR05

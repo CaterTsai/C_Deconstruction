@@ -216,9 +216,10 @@ void DTail::draw()
 void DTail::start()
 {
 	generateFlowFields();
-	_emitterNum = cTailEmitterNumMax;
-	_timer = _emitterT = cTailEmitterTFast;
+	_emitterNum = cTailEmitterNumMin;
+	_timer = _emitterT = cTailEmitterTSlow;
 	_isStart = true;
+	_color = cTailBaseColor;
 }
 
 //--------------------------------------
@@ -235,6 +236,24 @@ void DTail::trigger(int key)
 		emitter();
 	}
 
+}
+
+//--------------------------------------
+void DTail::setEmitterT(float t)
+{
+	_emitterT = t;
+}
+
+//--------------------------------------
+void DTail::setEmitterNum(int num)
+{
+	_emitterNum = num;
+}
+
+//--------------------------------------
+void DTail::setColor(float r)
+{
+	_color.r = r;
 }
 
 //--------------------------------------
@@ -282,8 +301,8 @@ void DTail::displayFlow(int x, int y, int w, int h)
 //--------------------------------------
 ofVec2f DTail::getFlow(ofVec2f pos)
 {
-	int x = static_cast<int>(((pos.x - cBreezRange.x) / cBreezRange.width) * cFieldCols);
-	int y = static_cast<int>(((pos.y - cBreezRange.y) / cBreezRange.height) * cFieldRows);
+	int x = static_cast<int>(((pos.x - cTailRange.x) / cTailRange.width) * cFieldCols);
+	int y = static_cast<int>(((pos.y - cTailRange.y) / cTailRange.height) * cFieldRows);
 
 
 	x = (x == cFieldCols) ? x - 1 : x;
@@ -326,9 +345,8 @@ void DTail::emitter(int num)
 {
 	for (int i = 0; i < num; i++)
 	{
-		ofColor c(55, 51, 128);
-		c.setHueAngle(c.getHueAngle() + ofRandom(-30.0, 30.0));
-
+		ofColor c = _color;
+		c.a = ofRandom(100, 200);
 		partical newP;
 		float theta = ofRandom(-PI * 0.5, -PI * 0.25f);
 		ofVec2f pos;
@@ -347,7 +365,7 @@ void DTail::emitter(int num)
 		float lifeT = cTailRange.getHeight() / cTailParticalSpeedMin * 2.0f;
 		vec *= ofRandom(cTailParticalSpeedMin, cTailParticalSpeedMax);
 		newP.set(pos, vec, acc, lifeT);
-		newP._color = c;
+		newP._color = _color;
 
 		newP._haveTail = (rand() % 3 != 0);
 		_pList.push_back(newP);

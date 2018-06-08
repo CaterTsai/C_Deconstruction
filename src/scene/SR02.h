@@ -18,5 +18,5 @@ public:
 	string getSceneName() { return "SR02"; }
 
 private:
-
+	
 };

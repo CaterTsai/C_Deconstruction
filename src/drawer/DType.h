@@ -10,7 +10,6 @@ enum eDType
 	eDCloud,
 	eDTemple,
 	eDPortrait,
-	//?
 	eDTail,
 	eDLife,
 	eDCyclicCA,

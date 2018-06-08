@@ -74,6 +74,10 @@ public:
 
 	void trigger(int key) override;
 
+	void setEmitterT(float t);
+	void setEmitterNum(int num);
+	void setColor(float r);
+
 private:
 	void generateFlowFields();
 	void displayFlow(int x, int y, int w, int h);
@@ -86,6 +90,7 @@ private:
 private:
 	int _emitterNum;
 	float _timer, _emitterT;
+	ofColor _color;
 	list<partical> _pList;
 	ofVec2f _flowFields[cFieldRows][cFieldCols];
 };

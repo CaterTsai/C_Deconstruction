@@ -109,6 +109,7 @@ void DBreeze::start()
 	_isStart = true;
 	_color = cBreezBaseColor;
 	_timer = _emitterT = cBreezEmitterSlow;
+	_type = ePType2DRandom;
 }
 
 //--------------------------------------

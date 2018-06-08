@@ -38,10 +38,10 @@ const int cCloudColorHueMax = 220;
 const int cCloudImageBaseWidth = 1000;
 const int cCloudParticalMax = 100;
 const int cCloudUnitMax = 30;
-const int cCloudPEmitterSlow = 3.0f;
-const int cCloudPEmitterFast = 0.5f;
-const int cCloudCEmitterSlow = 4.0f;
-const int cCloudCEmitterFast = 2.0f;
+const float cCloudPEmitterSlow = 3.0f;
+const float cCloudPEmitterFast = 0.5f;
+const float cCloudCEmitterSlow = 4.0f;
+const float cCloudCEmitterFast = 2.0f;
 const ofColor cCloudBaseColor(0, 203, 207);
 
 const int cTemplePillarRowNum = 8;
@@ -53,9 +53,10 @@ const int cPortraitPhotoSize = 1000;
 const int cPortraitMaskToPhoto = 5;
 const int cPortraitMaskThreshold = 150;
 const int cPortraitCircleRadius = cPortraitPhotoSize * 0.4f;
+const ofColor cPortraitBaseColor(0, 121, 156);
 
 //DTail
-const ofRectangle cTailRange = ofRectangle(0, 0, cWindowWidth, cWindowHeight);
+const ofRectangle cTailRange = ofRectangle(0, 0, 1024, 1024);
 const int cTailWidthLimit = 2;
 const float cTailParticalSizeMin = 2.0f;
 const float cTailParticalSizeMax = 4.0f;
@@ -67,7 +68,9 @@ const int cTailEmitterNumMin = 1;
 const int cTailEmitterNumMax = 5;
 const float cTailEmitterTSlow = 1.0;
 const float cTailEmitterTFast = 0.2;
+const ofColor cTailBaseColor(0, 45, 192);
 
-//DLife
+//DCyclicCA
 const int cWorldWidth = 150;
 const int cWorldHeight = 150;
+const ofColor cCyclicCABaseColor(255, 0, 89);

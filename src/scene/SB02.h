@@ -11,6 +11,10 @@ public:
 
 	void update(float delta) override 
 	{
+		if (!_isStart)
+		{
+			return;
+		}
 		_dsg.update(delta);
 	}
 
@@ -33,63 +37,69 @@ public:
 	void start() override 
 	{
 		_dsg.start();
+		_isStart = true;
 	}
 
 	void stop() override 
 	{
 		_dsg.stop();
+		_isStart = true;
 	}
 	void control(eCtrlType ctrl, int value = cMidiButtonPress) override
 	{
-		switch (ctrl)
+		if (value == cMidiButtonPress)
 		{
-		case eCtrlType::eCtrl_ViewTrigger1:
-		{
-			_dsg.trigger(0);
-			break;
+			switch (ctrl)
+			{
+			case eCtrlType::eCtrl_ViewTrigger1:
+			{
+				_dsg.trigger(0);
+				break;
+			}
+			case eCtrlType::eCtrl_ViewTrigger2:
+			{
+				_dsg.trigger(1);
+				break;
+			}
+			case eCtrlType::eCtrl_ViewTrigger3:
+			{
+				_dsg.trigger(2);
+				break;
+			}
+			case eCtrlType::eCtrl_ViewTrigger4:
+			{
+				_dsg.trigger(3);
+				break;
+			}
+			case eCtrlType::eCtrl_ViewTrigger5:
+			{
+				_dsg.trigger(4);
+				break;
+			}
+			case eCtrlType::eCtrl_ViewTrigger6:
+			{
+				_dsg.trigger(5);
+				break;
+			}
+			case eCtrlType::eCtrl_ViewTrigger7:
+			{
+				_dsg.trigger(6);
+				break;
+			}
+			case eCtrlType::eCtrl_ViewTrigger8:
+			{
+				_dsg.trigger(7);
+				break;
+			}
+			}
 		}
-		case eCtrlType::eCtrl_ViewTrigger2:
-		{
-			_dsg.trigger(1);
-			break;
-		}
-		case eCtrlType::eCtrl_ViewTrigger3:
-		{
-			_dsg.trigger(2);
-			break;
-		}
-		case eCtrlType::eCtrl_ViewTrigger4:
-		{
-			_dsg.trigger(3);
-			break;
-		}
-		case eCtrlType::eCtrl_ViewTrigger5:
-		{
-			_dsg.trigger(4);
-			break;
-		}
-		case eCtrlType::eCtrl_ViewTrigger6:
-		{
-			_dsg.trigger(5);
-			break;
-		}
-		case eCtrlType::eCtrl_ViewTrigger7:
-		{
-			_dsg.trigger(6);
-			break;
-		}
-		case eCtrlType::eCtrl_ViewTrigger8:
-		{
-			_dsg.trigger(7);
-			break;
-		}
-		case eCtrlType::eCtrl_ViewKnob1:
+		
+		if(ctrl ==  eCtrlType::eCtrl_ViewKnob1)
 		{
 			float rv = ofMap(value, cMidiValueMin, cMidiValueMax, cStainedRotateMin, cStainedRotateMax);
 			_dsg.setRotateV(rv);
-			break;
 		}
-		}
+		
 	};
 	string getSceneName() { return "SB02"; }
 

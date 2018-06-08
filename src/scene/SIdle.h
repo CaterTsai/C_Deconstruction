@@ -15,7 +15,6 @@ public:
 	{
 		ostringstream ss;
 		ss << "SIdel";
-
 		ofDrawBitmapStringHighlight(ss.str(), pos);
 	};
 	void start() override 
@@ -23,7 +22,6 @@ public:
 	};
 	void stop() override 
 	{
-		postFilter::GetInstance()->disableAll();
 	};
 	void control(eCtrlType ctrl, int value = cMidiButtonPress) override {};
 	string getSceneName() { return "SIdle"; }

@@ -22,6 +22,7 @@ public:
 		, _threshold(3)
 		, _stateNum(3)
 		, _type(eNeighbouring::eMoore)
+		, _baseColor(cCyclicCABaseColor)
 	{
 	}
 
@@ -31,6 +32,7 @@ public:
 	void stop() override;
 
 	void set(int r, int t, int s, eNeighbouring type);
+	void setBaseColor(ofColor baseColor);
 
 private:
 	void createWorld();
@@ -41,6 +43,7 @@ private:
 	vector<ofVec2f> getNeighborIndex(int r, eNeighbouring type);
 	void initPattern();
 private:
+	ofColor _baseColor;
 	float _timer;
 	vector<ofColor> _colorSet;
 	vector<ofVec2f> _neighborIndex;

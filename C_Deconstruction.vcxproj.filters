@@ -325,6 +325,9 @@
     <ClCompile Include="src\drawer\DCyclicCA.cpp">
       <Filter>src\drawer\DElement</Filter>
     </ClCompile>
+    <ClCompile Include="src\drawer\DInstagram.cpp">
+      <Filter>src\drawer\DElement</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -989,9 +992,6 @@
     <ClInclude Include="src\scene\SR01.h">
       <Filter>src\sceneMgr\SElement</Filter>
     </ClInclude>
-    <ClInclude Include="src\scene\SR02.h">
-      <Filter>src\sceneMgr\SElement</Filter>
-    </ClInclude>
     <ClInclude Include="src\scene\SR03.h">
       <Filter>src\sceneMgr\SElement</Filter>
     </ClInclude>
@@ -1011,6 +1011,9 @@
       <Filter>src\sceneMgr</Filter>
     </ClInclude>
     <ClInclude Include="src\drawer\DCyclicCA.h">
+      <Filter>src\drawer\DElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\drawer\DInstagram.h">
       <Filter>src\drawer\DElement</Filter>
     </ClInclude>
   </ItemGroup>

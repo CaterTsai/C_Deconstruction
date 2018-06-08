@@ -4,6 +4,7 @@
 #include "DStainedGlass.h"
 #include "DEgyptianVertical.h"
 #include "DBreeze.h"
+#include "DInstagram.h"
 #include "DClouds.h"
 #include "DTemple.h"
 #include "DPortrait.h"

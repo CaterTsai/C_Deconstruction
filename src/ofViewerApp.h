@@ -13,6 +13,8 @@ class ofViewerApp : public ofBaseApp, public ofxMidiListener {
 
 public:
 	ofViewerApp()
+		:_isStart(false)
+		, _showMsg(true)
 	{
 	}
 

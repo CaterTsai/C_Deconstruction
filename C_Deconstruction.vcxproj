@@ -182,6 +182,7 @@
     <ClCompile Include="src\drawer\DClouds.cpp" />
     <ClCompile Include="src\drawer\DCyclicCA.cpp" />
     <ClCompile Include="src\drawer\DEgyptianVertical.cpp" />
+    <ClCompile Include="src\drawer\DInstagram.cpp" />
     <ClCompile Include="src\drawer\DLife.cpp" />
     <ClCompile Include="src\drawer\DPortrait.cpp" />
     <ClCompile Include="src\drawer\DRomanCircle.cpp" />
@@ -331,6 +332,7 @@
     <ClInclude Include="src\drawer\DClouds.h" />
     <ClInclude Include="src\drawer\DCyclicCA.h" />
     <ClInclude Include="src\drawer\DEgyptianVertical.h" />
+    <ClInclude Include="src\drawer\DInstagram.h" />
     <ClInclude Include="src\drawer\DLife.h" />
     <ClInclude Include="src\drawer\DPortrait.h" />
     <ClInclude Include="src\drawer\drawer.h" />
@@ -454,7 +456,6 @@
     <ClInclude Include="src\scene\SM04.h" />
     <ClInclude Include="src\scene\SMIntro.h" />
     <ClInclude Include="src\scene\SR01.h" />
-    <ClInclude Include="src\scene\SR02.h" />
     <ClInclude Include="src\scene\SR03.h" />
     <ClInclude Include="src\scene\SR04.h" />
     <ClInclude Include="src\scene\SR05.h" />

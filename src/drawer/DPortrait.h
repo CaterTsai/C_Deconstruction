@@ -44,6 +44,7 @@ private:
 public:
 	DPortrait()
 		:DBase(eDPortrait)
+		, _rotate(0)
 	{
 		loadPortrait(_weber, "weber");
 		loadPortrait(_tiny, "tiny");
@@ -54,13 +55,15 @@ public:
 	}
 
 	void update(float delta) override;
-	void draw() override;
-	void drawPhoto();
+	void draw(int x, int y, int w, int h) override;
+	void drawPhoto(int w, int h);
 	void start() override;
 	void stop() override;
 
 	void trigger(int key) override;
-
+	void togglePhoto();
+	void setRotateV(float rv);
+	void setColorR(float r);
 private:
 	void initPartical();
 	void loadPortrait(portraitData& data, string name);
@@ -76,6 +79,7 @@ private:
 	void movePartical(float duration);
 
 	void cross(float duration);
+	
 
 private:
 	enum eState {
@@ -94,4 +98,7 @@ private:
 	maskData _dancer, _dancer2, _flower;
 	array<pUnit, cPortraitUnitSize> _pList;
 	ofxAnimatableFloat _animAlpha;
+
+	float _rotate, _rotateV;
+	ofColor _color;
 };

@@ -9,12 +9,11 @@ public:
 		:SBase(eSM03)
 	{}
 
-	void update(float delta) override {}
-	void draw() override {};
-	void drawMsg(ofVec2f pos) override {};
-	void start() override {};
-	void stop() override {};
-	void control(eCtrlType ctrl, int value = cMidiButtonPress) override {};
+	void drawMsg(ofVec2f pos) override {
+		ostringstream ss;
+		ss << "SM03 Sora\n";
+		ofDrawBitmapStringHighlight(ss.str(), pos);
+	};
 	string getSceneName() { return "SM03"; }
 
 private:

@@ -11,11 +11,19 @@ public:
 
 	void update(float delta) override
 	{
+		if (!_isStart)
+		{
+			return;
+		}
 		_dt.update(delta);
 	}
 
 	void draw() override
 	{
+		if (!_isStart)
+		{
+			return;
+		}
 		displayMgr::GetInstance()->updateOnUnitBegin(eFront, true);
 		postFilter::GetInstance()->_postMgr[eFront].begin(camCtrl::GetInstance()->getCanvasCam());
 
@@ -27,7 +35,7 @@ public:
 	void drawMsg(ofVec2f pos) override
 	{
 		ostringstream ss;
-		ss << "SB04 Del fiero duol che il cor mi frange\n";
+		ss << "SC04 Del fiero duol che il cor mi frange\n";
 		ss << "1-7 : Troggle Light\n";
 		ss << "k1 : Change light color\n";
 		ofDrawBitmapStringHighlight(ss.str(), pos);
@@ -38,56 +46,63 @@ public:
 		camCtrl::GetInstance()->getCanvasCam().setFarClip(2000);
 		camCtrl::GetInstance()->_canvasCam.setFixed(ofVec3f(0, -300, 700));
 		camCtrl::GetInstance()->_canvasCam.setTarget(ofVec3f(0, -300, 0));
+		_isStart = true;
 	};
 
 	void stop() override {
 		_dt.stop();
+		_isStart = false;
 	};
 	void control(eCtrlType ctrl, int value = cMidiButtonPress) override
 	{
-		switch (ctrl)
+		if (value == cMidiButtonPress)
 		{
-		case eCtrlType::eCtrl_ViewTrigger1:
-		{
-			_dt.trigger(0);
-			break;
+			switch (ctrl)
+			{
+			case eCtrlType::eCtrl_ViewTrigger1:
+			{
+				_dt.trigger(0);
+				break;
+			}
+			case eCtrlType::eCtrl_ViewTrigger2:
+			{
+				_dt.trigger(1);
+				break;
+			}
+			case eCtrlType::eCtrl_ViewTrigger3:
+			{
+				_dt.trigger(2);
+				break;
+			}
+			case eCtrlType::eCtrl_ViewTrigger4:
+			{
+				_dt.trigger(3);
+				break;
+			}
+			case eCtrlType::eCtrl_ViewTrigger5:
+			{
+				_dt.trigger(4);
+				break;
+			}
+			case eCtrlType::eCtrl_ViewTrigger6:
+			{
+				_dt.trigger(5);
+				break;
+			}
+			case eCtrlType::eCtrl_ViewTrigger7:
+			{
+				_dt.trigger(6);
+				break;
+			}
+			}
 		}
-		case eCtrlType::eCtrl_ViewTrigger2:
-		{
-			_dt.trigger(1);
-			break;
-		}
-		case eCtrlType::eCtrl_ViewTrigger3:
-		{
-			_dt.trigger(2);
-			break;
-		}
-		case eCtrlType::eCtrl_ViewTrigger4:
-		{
-			_dt.trigger(3);
-			break;
-		}
-		case eCtrlType::eCtrl_ViewTrigger5:
-		{
-			_dt.trigger(4);
-			break;
-		}
-		case eCtrlType::eCtrl_ViewTrigger6:
-		{
-			_dt.trigger(5);
-			break;
-		}
-		case eCtrlType::eCtrl_ViewTrigger7:
-		{
-			_dt.trigger(6);
-			break;
-		}
-		case eCtrlType::eCtrl_ViewKnob1: 
+
+		if (ctrl == eCtrlType::eCtrl_ViewKnob1)
 		{
 			int g = ofMap(value, cMidiValueMin, cMidiValueMax, 0, 255);
 			_dt.setColorG(g);
 		}
-		}
+
 	};
 	string getSceneName() { return "SC04"; }
 

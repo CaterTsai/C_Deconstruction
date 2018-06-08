@@ -11,11 +11,19 @@ public:
 
 	void update(float delta) override 
 	{
+		if (!_isStart)
+		{
+			return;
+		}
 		_dc.update(delta);
 	}
 
 	void draw() override 
 	{
+		if (!_isStart)
+		{
+			return;
+		}
 		displayMgr::GetInstance()->updateOnUnitBegin(eFront, true);
 		postFilter::GetInstance()->_postMgr[eFront].begin();
 		_dc.draw();
@@ -34,11 +42,13 @@ public:
 	};
 	void start() override 
 	{
+		_isStart = true;
 		_dc.start();
 	}
 
 	void stop() override 
 	{
+		_isStart = false;
 		_dc.stop();
 	};
 	void control(eCtrlType ctrl, int value = cMidiButtonPress) override 
@@ -47,14 +57,14 @@ public:
 		{
 		case eCtrlType::eCtrl_ViewKnob1:
 		{
-			float et = ofMap(value, cMidiValueMin, cMidiValueMax, cCloudPEmitterFast, cCloudPEmitterSlow);
+			float et = ofMap(cMidiValueMax - value, cMidiValueMin, cMidiValueMax, cCloudPEmitterFast, cCloudPEmitterSlow);
 			_dc.setPEmmiterT(et);
 			break;
 		}
 		case eCtrlType::eCtrl_ViewKnob2:
 		{
-			int num = ofMap(value, cMidiValueMin, cMidiValueMax, cCloudCEmitterFast, cCloudCEmitterSlow);
-			_dc.setCEmmiterT(num);
+			float ct = ofMap(cMidiValueMax - value, cMidiValueMin, cMidiValueMax, cCloudCEmitterFast, cCloudCEmitterSlow);
+			_dc.setCEmmiterT(ct);
 			break;
 		}
 		case eCtrlType::eCtrl_ViewKnob3:

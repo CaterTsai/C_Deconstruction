@@ -8,15 +8,15 @@ void ofViewerApp::setup()
 	//Singleton
 	displayMgr::GetInstance()->setup("config/_displayConfig.xml");
 	postFilter::GetInstance()->init(0, 1920, 1080, true);
-	postFilter::GetInstance()->init(1, 300, 300, false);
+	postFilter::GetInstance()->init(1, 1024, 1024, false);
 	postFilter::GetInstance()->init(2, 1024, 1024, false);
 	//postFilter::GetInstance()->_squarePost.setFlip(false);
 	midiCtrl::GetInstance()->init();
 	midiCtrl::GetInstance()->addListener(this);
-	
+
 	initVideo();
 	initScene();
-	_scenceMgr[_nowScence]->start();
+
 	ofSetFrameRate(60);
 
 
@@ -48,9 +48,11 @@ void ofViewerApp::draw()
 
 	if (_showMsg)
 	{
-		ofDrawBitmapStringHighlight("Scence :" + _scenceMgr[_nowScence]->getSceneName(), ofVec2f(0, 65));
+		ofSetColor(255);
+		string state =  + _isStart ? "Play" : "Stop";
+		ofDrawBitmapStringHighlight("State :" + state, ofVec2f(0, 95));
 		//Debug
-		camCtrl::GetInstance()->displayPos(ofVec2f(0, 45));
+		//camCtrl::GetInstance()->displayPos(ofVec2f(0, 45));
 		_scenceMgr[_nowScence]->drawMsg(ofVec2f(0, 110));
 	}
 
@@ -136,7 +138,7 @@ void ofViewerApp::control(eCtrlType ctrl, int value)
 			}
 			_nowScence = nextScence;
 			displayMgr::GetInstance()->clearAllDisplay();
-			
+
 		}
 		break;
 	}
@@ -165,63 +167,7 @@ void ofViewerApp::control(eCtrlType ctrl, int value)
 		}
 		break;
 	}
-	case eCtrl_Filter3:
-	{
-		if (value == cMidiButtonPress)
-		{
-			postFilter::GetInstance()->filterEnable(ePostFilterType::ePostEdge);
-		}
-		break;
 	}
-	case eCtrl_Filter4:
-	{
-		if (value == cMidiButtonPress)
-		{
-			postFilter::GetInstance()->filterEnable(ePostFilterType::ePostKaleidoscope);
-		}
-		break;
-	}
-	case eCtrl_Filter5:
-	{
-		if (value == cMidiButtonPress)
-		{
-			postFilter::GetInstance()->filterEnable(ePostFilterType::ePostNoiseWarp);
-		}
-		break;
-	}
-	case eCtrl_Filter6:
-	{
-		if (value == cMidiButtonPress)
-		{
-			postFilter::GetInstance()->filterEnable(ePostFilterType::ePostPixel);
-		}
-		break;
-	}
-	case eCtrl_Filter7:
-	{
-		if (value == cMidiButtonPress)
-		{
-			postFilter::GetInstance()->filterEnable(ePostFilterType::ePostRGBShift);
-		}
-		break;
-	}
-	case eCtrl_Filter8:
-	{
-		if (value == cMidiButtonPress)
-		{
-			postFilter::GetInstance()->filterEnable(ePostFilterType::ePostToon);
-		}
-		break;
-	}
-	case eCtrl_Filter9:
-	{
-		if (value == cMidiButtonPress)
-		{
-			postFilter::GetInstance()->filterEnable(ePostFilterType::ePostZoomBlur);
-		}
-		break;
-	}
-}
 #pragma endregion
 }
 
@@ -241,7 +187,6 @@ void ofViewerApp::initScene()
 	_scenceMgr.push_back(ofPtr<SC04>(new SC04()));
 	_scenceMgr.push_back(ofPtr<SRIntro>(new SRIntro()));
 	_scenceMgr.push_back(ofPtr<SR01>(new SR01()));
-	_scenceMgr.push_back(ofPtr<SR02>(new SR02()));
 	_scenceMgr.push_back(ofPtr<SR03>(new SR03()));
 	_scenceMgr.push_back(ofPtr<SR04>(new SR04()));
 	_scenceMgr.push_back(ofPtr<SR05>(new SR05()));
@@ -252,7 +197,7 @@ void ofViewerApp::initScene()
 	_scenceMgr.push_back(ofPtr<SM04>(new SM04()));
 	_scenceMgr.push_back(ofPtr<SEncore>(new SEncore()));
 
-	_nowScence = eSC04;
+	_nowScence = eSIdle;
 }
 
 //----------------------------------

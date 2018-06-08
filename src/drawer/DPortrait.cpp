@@ -33,20 +33,31 @@ void DPortrait::update(float delta)
 	for (auto& iter : _pList) {
 		iter.update(delta);
 	}
+
+	_rotate += _rotateV * delta;
+	if (_rotate > 360)
+	{
+		_rotate -= 360.0f;
+	}
+
 }
 
 //-----------------------------------
-void DPortrait::draw()
+void DPortrait::draw(int x, int y, int w, int h)
 {
 	CHECK_START();
 
 	ofPushStyle();
 	ofSetColor(255);
 	ofPushMatrix();
-	ofTranslate(1024 * 0.5, 1024 * 0.5);
+	ofTranslate(w * 0.5, h * 0.5);
+	if (_eState != eWeber && _eState != eTiny && _eState != eMaki)
+	{
+		ofRotateZ(_rotate);
+	}
 	for (auto& iter : _pList) {
 		ofSetColor(iter._animC.getCurrentColor(), _animAlpha.getCurrentValue());
-		ofVec2f pos = iter._animPos.getCurrentPosition() + iter._offset;
+		ofVec2f pos = (iter._animPos.getCurrentPosition() + iter._offset) * ((float)w/cPortraitPhotoSize);
 		ofDrawCircle(pos, 5);
 	}
 	ofPopMatrix();
@@ -54,29 +65,29 @@ void DPortrait::draw()
 }
 
 //-----------------------------------
-void DPortrait::drawPhoto()
+void DPortrait::drawPhoto(int w, int h)
 {
 	CHECK_START();
 
 	ofPushStyle();
 	ofSetColor(255, 255.0f - _animAlpha.getCurrentValue());
 	ofPushMatrix();
-	ofTranslate(1024 * 0.5, 1024 * 0.5);
+	ofTranslate(w * 0.5, h * 0.5);
 	switch (_eState)
 	{
 	case eWeber:
 	{
-		_weber.photo.draw(_weber.photo.getWidth() * -0.5, _weber.photo.getHeight() * -0.5);
+		_weber.photo.draw(w * -0.5, h * -0.5, w, h);
 		break;
 	}
 	case eTiny:
 	{
-		_tiny.photo.draw(_tiny.photo.getWidth() * -0.5, _tiny.photo.getHeight() * -0.5);
+		_tiny.photo.draw(w * -0.5,h * -0.5, w, h);
 		break;
 	}
 	case eMaki:
 	{
-		_maki.photo.draw(_maki.photo.getWidth() * -0.5, _maki.photo.getHeight() * -0.5);
+		_maki.photo.draw(w * -0.5, h * -0.5, w, h);
 		break;
 	}
 	}
@@ -92,7 +103,10 @@ void DPortrait::start()
 	toPortrait(1.0f, _weber);
 	_animAlpha.reset(0.0);
 	_isStart = true;
+
+	_rotate = _rotateV = 0;
 	_eState = eWeber;
+	_color = cPortraitBaseColor;
 }
 
 //-----------------------------------
@@ -106,34 +120,35 @@ void DPortrait::trigger(int key)
 {
 	switch (key)
 	{
-	case 0:
-	{
-		toCircle(3.0f);
-		_eState = eCircle;
-		toColor(3.0f, ofColor(ofRandom(0, 255), ofRandom(0, 255), ofRandom(0, 255)));
-		break;
-	}
-	case 1: {
-		toCenter(3.0f);
-		_eState = eCenter;
-		toColor(3.0f, ofColor(ofRandom(0, 255), ofRandom(0, 255), ofRandom(0, 255)));
-		break;
-	}
-	case 2: {
+	case 0: {
 		_eState = eWeber;
 		toPortrait(3.0f, _weber);
 		break;
 	}
-	case 3: {
+	case 1: {
 		_eState = eTiny;
 		toPortrait(3.0f, _tiny);
 		break;
 	}
-	case 4: {
+	case 2: {
 		_eState = eMaki;
 		toPortrait(3.0f, _maki);
 		break;
 	}
+	case 3:
+	{
+		toCircle(3.0f);
+		_eState = eCircle;
+		toColor(3.0f, _color);
+		break;
+	}
+	case 4: {
+		toCenter(3.0f);
+		_eState = eCenter;
+		toColor(3.0f, _color);
+		break;
+	}
+
 	case 5: {
 		_eState = eDancer1;
 		toMask(3.0f, _dancer);
@@ -153,11 +168,27 @@ void DPortrait::trigger(int key)
 		movePartical(1.0);
 		break;
 	}
-	case ' ': {
-		cross(3.0);
-		break;
 	}
-	}
+}
+
+//-----------------------------------
+void DPortrait::togglePhoto()
+{
+	cross(3.0f);
+}
+
+//-----------------------------------
+void DPortrait::setRotateV(float rv)
+{
+	_rotateV = rv;
+}
+
+//-----------------------------------
+void DPortrait::setColorR(float r)
+{
+	_color.r = r;
+
+
 }
 
 //-----------------------------------
@@ -168,7 +199,7 @@ void DPortrait::initPartical()
 		ofVec2f p = v * ofRandom(0, 100);
 		p.rotate(ofRandom(0, 360));
 		iter._animPos.setPosition(p);
-		iter._animC.setColor(ofColor(ofRandom(100, 200)));
+		iter._animC.setColor(_color);
 	}
 }
 
@@ -314,7 +345,7 @@ void DPortrait::toMask(float duration, maskData & data)
 	for (int i = 0; i < data.size; i++)
 	{
 		_pList[i]._animC.setDuration(duration * ofRandom(0.8, 0.9));
-		_pList[i]._animC.animateTo(ofColor(ofRandom(0, 255), ofRandom(0, 255), ofRandom(0, 255)));
+		_pList[i]._animC.animateTo(_color);
 
 		_pList[i]._animPos.setDuration(duration * ofRandom(0.8, 0.9));
 		_pList[i]._animPos.animateTo(data.pos[i]);
@@ -357,5 +388,4 @@ void DPortrait::cross(float duration)
 		_animAlpha.animateTo(255.0f);
 	}
 }
-
 

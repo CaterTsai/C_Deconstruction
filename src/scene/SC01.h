@@ -11,11 +11,19 @@ public:
 
 	void update(float delta) override 
 	{
+		if (!_isStart)
+		{
+			return;
+		}
 		_db.update(delta);
 	}
 
 	void draw() override 
 	{
+		if (!_isStart)
+		{
+			return;
+		}
 		displayMgr::GetInstance()->updateOnUnitBegin(eFront, true);
 		postFilter::GetInstance()->_postMgr[eFront].begin();
 		_db.draw();
@@ -38,45 +46,54 @@ public:
 
 	void start() override 
 	{
+		_isStart = true;
 		_db.start();
 	}
 
 	void stop() override 
 	{
+		_isStart = false;
 		_db.stop();
 	}
 
 	void control(eCtrlType ctrl, int value = cMidiButtonPress) 
 	{
-		switch (ctrl)
+		if (value == cMidiButtonPress)
 		{
-		case eCtrlType::eCtrl_ViewTrigger1:
+			switch (ctrl)
+			{
+			case eCtrlType::eCtrl_ViewTrigger1:
+			{
+				_db.toggleAutoEmitter();
+				break;
+			}
+			case eCtrlType::eCtrl_ViewTrigger2:
+			{
+				_db.setEmitter(DBreeze::ePType2DRandom);
+				break;
+			}
+			case eCtrlType::eCtrl_ViewTrigger3:
+			{
+				_db.setEmitter(DBreeze::ePType3DRandom);
+				break;
+			}
+			case eCtrlType::eCtrl_ViewTrigger4:
+			{
+				_db.setEmitter(DBreeze::ePTypeRandom);
+				break;
+			}
+			case eCtrlType::eCtrl_ViewTrigger5: {
+				_db.setEmitterT(2.0f);
+				break;
+			}
+			}
+		}
+		
+		switch(ctrl)
 		{
-			_db.toggleAutoEmitter();
-			break;
-		}
-		case eCtrlType::eCtrl_ViewTrigger2:
-		{
-			_db.setEmitter(DBreeze::ePType2DRandom);
-			break;
-		}
-		case eCtrlType::eCtrl_ViewTrigger3:
-		{
-			_db.setEmitter(DBreeze::ePType3DRandom);
-			break;
-		}
-		case eCtrlType::eCtrl_ViewTrigger4:
-		{
-			_db.setEmitter(DBreeze::ePTypeRandom);
-			break;
-		}
-		case eCtrlType::eCtrl_ViewTrigger5: {
-			_db.setEmitterT(2.0f);
-			break;
-		}
 		case eCtrlType::eCtrl_ViewKnob1:
 		{
-			float et = ofMap(value, cMidiValueMin, cMidiValueMax, cBreezEmitterFast, cBreezEmitterSlow);
+			float et = ofMap(cMidiValueMax - value, cMidiValueMin, cMidiValueMax, cBreezEmitterFast, cBreezEmitterSlow);
 			_db.setEmitterT(et);
 			break;
 		}
