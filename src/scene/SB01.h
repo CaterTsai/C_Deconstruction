@@ -58,7 +58,6 @@ public:
 	};
 	void start() override 
 	{
-		camCtrl::GetInstance()->reset();
 		_displayRect = displayMgr::GetInstance()->getSize(eFront);
 		_layer.setup(_displayRect.width, _displayRect.width);
 		_layer.newLayer();

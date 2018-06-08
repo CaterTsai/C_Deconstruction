@@ -37,6 +37,7 @@ public:
 		:DBase(eDTemple)
 	{
 		loadPillar();
+		
 	}
 
 	void update(float delta) override;
@@ -47,12 +48,12 @@ public:
 
 	void trigger(int key) override;
 
+	void setColorG(int g);
 private:
 	void loadPillar();
 	void initLight();
 private:
-	//ofPoint _lightV;
-	//ofLight _light;
+	ofColor _color;
 	
 	array<lightUnit, cTemplePillarRowNum> _lightMgr;
 	vector<ofVec3f> _pillarMgr;

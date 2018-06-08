@@ -22,7 +22,7 @@ private:
 
 		void update(float delta);
 		void set(int cloudIndex);
-		void set();
+		void set(ofColor c);
 		ofVec2f getPos();
 		ofColor getColor();
 
@@ -53,6 +53,10 @@ public:
 
 	void trigger(int key) override;
 
+	void setPEmmiterT(float t);
+	void setCEmmiterT(float t);
+	void setColorR(float r);
+
 private:
 	void loadClouds();
 
@@ -63,6 +67,7 @@ private:
 	void emitter(float delta);
 
 private:
+	ofColor _color;
 	float _pTimer, _pEmmiterT;
 	float _cTimer, _cEmmiterT;
 

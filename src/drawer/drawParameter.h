@@ -26,6 +26,11 @@ const float cBreezParticalSpeedMin = 100.0f;
 const float cBreezParticalSpeedMax = 500.0f;
 const float cBreezParticalSizeMin = 5.0f;
 const float cBreezParticalSizeMax = 20.0f;
+const float cBreezEmitterSlow = 1.0f;
+const float cBreezEmitterFast = 0.2f;
+const int cBreezEmitterNumMin = 1;
+const int cBreezEmitterNumMax = 5;
+const ofColor cBreezBaseColor(0, 75, 129);
 
 const int cCloudImgNum = 4;
 const int cCloudColorHueMin = 180;
@@ -33,8 +38,14 @@ const int cCloudColorHueMax = 220;
 const int cCloudImageBaseWidth = 1000;
 const int cCloudParticalMax = 100;
 const int cCloudUnitMax = 30;
+const int cCloudPEmitterSlow = 3.0f;
+const int cCloudPEmitterFast = 0.5f;
+const int cCloudCEmitterSlow = 4.0f;
+const int cCloudCEmitterFast = 2.0f;
+const ofColor cCloudBaseColor(0, 203, 207);
 
 const int cTemplePillarRowNum = 8;
+const ofColor cTempleLightBaseColor(235, 0, 41);
 
 const int cPortraitUnitSize = 1000;
 const int cPortraitMaskSize = 200;

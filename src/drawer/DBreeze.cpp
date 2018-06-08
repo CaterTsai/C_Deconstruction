@@ -63,6 +63,16 @@ void DBreeze::update(float delta)
 {
 	CHECK_START();
 
+	if (_autoEmitter)
+	{
+		_timer -= delta;
+		if (_timer < 0.0f)
+		{
+			emitter(_emitterNum, _type);
+			_timer = _emitterT;
+		}
+	}
+
 	for (auto& iter : _pList)
 	{
 		iter.update(delta, getFlow(iter._pos));
@@ -84,7 +94,9 @@ void DBreeze::draw()
 
 	for (auto& iter : _pList)
 	{
-		ofSetColor(255, iter._life / iter._lifeLength * 255.0f);
+		float life = iter._life / iter._lifeLength;
+		life = (life <= 0.1f) ? ofMap(life, 0.0f, 0.1f, 0, 255) : 255;
+		ofSetColor(_color, life);
 		drawPartical(iter);
 	}
 	ofPopStyle();
@@ -95,6 +107,8 @@ void DBreeze::start()
 {
 	generateFlowFields();
 	_isStart = true;
+	_color = cBreezBaseColor;
+	_timer = _emitterT = cBreezEmitterSlow;
 }
 
 //--------------------------------------
@@ -104,13 +118,37 @@ void DBreeze::stop()
 }
 
 //--------------------------------------
-void DBreeze::trigger(int key)
+void DBreeze::toggleAutoEmitter()
 {
-	if (key == ' ')
-	{
-		emitter();
-	}
+	_autoEmitter = !_autoEmitter;
 
+	if (_autoEmitter)
+	{
+		_timer = _emitterT;
+	}
+}
+
+//--------------------------------------
+void DBreeze::setEmitter(ePType type)
+{
+	_type = type;
+}
+
+//--------------------------------------
+void DBreeze::setEmitterT(float v)
+{
+	_emitterT = v;
+}
+
+//--------------------------------------
+void DBreeze::setEmitterNum(int num)
+{
+	_emitterNum = num;
+}
+
+void DBreeze::setColorR(int R)
+{
+	_color.r = R;
 }
 
 //--------------------------------------
@@ -124,7 +162,7 @@ void DBreeze::generateFlowFields()
 			//float theta = ofMap(ofNoise(i * offset, j * offset), 0, 1, 0, TWO_PI);
 			float theta = ofRandom(-PI / 2.0f, PI / 2.0f);
 			ofVec2f desired(cos(theta), sin(theta));
-			_flowFields[i][j].set(desired.normalized() * 500);
+			_flowFields[i][j].set(desired.normalized() * ofRandom(cBreezParticalSpeedMin, cBreezParticalSpeedMax));
 		}
 	}
 }
@@ -228,24 +266,37 @@ void DBreeze::drawPartical(partical& p)
 }
 
 //--------------------------------------
-void DBreeze::emitter(ePType type)
+void DBreeze::emitter(int num, ePType type)
 {
-	partical newP;
-	float theta = ofRandom(-PI / 4.0f, PI / 4.0f);
-	ofVec2f pos(cBreezRange.getMinX(), ofRandom(cBreezRange.getMinY(), cBreezRange.getMaxY()));
-	ofVec2f vec(cos(theta), sin(theta));
-	ofVec2f acc(0);
-	
-	if (type == ePType::ePTypeRandom)
+	for (int i = 0; i < num; i++)
 	{
-		type = (ePType)(rand() % ePType::ePTypeNum);
+		partical newP;
+		float theta = ofRandom(-PI / 4.0f, PI / 4.0f);
+		ofVec2f pos(cBreezRange.getMinX(), ofRandom(cBreezRange.getMinY(), cBreezRange.getMaxY()));
+		ofVec2f vec(cos(theta), sin(theta));
+		ofVec2f acc(0);
+
+		if (type == ePType::ePTypeRandom)
+		{
+			type = (ePType)(rand() % ePType::ePTypeNum);
+		}
+		else if (type == ePType::ePType2DRandom)
+		{
+			type = (ePType)(rand() % 3);
+		}
+		else if (type == ePType::ePType3DRandom)
+		{
+			type = (ePType)(3 + rand() % 4);
+		}
+
+
+		float lifeT = ofRandom(10, 20);
+		vec *= ofRandom(cBreezParticalSpeedMin, cBreezParticalSpeedMax);
+		newP.set(type, pos, vec, acc, lifeT);
+
+		_pList.push_back(newP);
 	}
 
-	float lifeT = ofRandom(5, 15);
-	vec *= ofRandom(cBreezParticalSpeedMin, cBreezParticalSpeedMax);
-	newP.set(type, pos, vec, acc, lifeT);
-
-	_pList.push_back(newP);
 }
 
 

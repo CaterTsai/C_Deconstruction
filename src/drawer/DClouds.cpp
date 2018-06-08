@@ -33,11 +33,11 @@ void DClouds::cloudUnit::set(int cloudIndex)
 }
 
 //---------------------------------
-void DClouds::cloudUnit::set()
+void DClouds::cloudUnit::set(ofColor c)
 {
 	_eType = eCloudPartical;
-	_c.set(0, 200, 200, ofRandom(50, 150));
-	_c.setHueAngle(ofRandom(cCloudColorHueMin, cCloudColorHueMax));
+	_c = c;
+	_c.set(c.r, c.g, c.b, ofRandom(50, 150));
 	_size = ofRandom(5, 50);
 	init();
 }
@@ -88,7 +88,7 @@ void DClouds::cloudUnit::init()
 			tx = ofGetWidth() + ofRandom(-200, 200);
 		}
 	}
-	int y = ofRandom(ofGetHeight() * 0.6, ofGetHeight());
+	int y = ofRandom(ofGetHeight() * 0.65, ofGetHeight());
 	_source.set(sx, y);
 	_target.set(tx, y);
 
@@ -135,7 +135,14 @@ void DClouds::draw()
 	{
 		ofPushMatrix();
 		ofTranslate(iter.getPos());
-		ofSetColor(255, iter._alpha * 255.0f);
+		if (iter._eType == eCloudType::eCloudPartical)
+		{
+			ofSetColor(255, iter._alpha * 255.0f);
+		}
+		else
+		{
+			ofSetColor(_color, iter._alpha * 255.0f);
+		}
 
 		int w = _cloudsImg[iter._cloudIdx].getWidth() * iter._size;
 		int h = _cloudsImg[iter._cloudIdx].getHeight() * iter._size;
@@ -151,9 +158,9 @@ void DClouds::start()
 {
 	_isStart = true;
 	ofSetCircleResolution(60);
-	_pTimer = _cTimer = 0.0f;
-	_pEmmiterT = 2.0f;
-	_cEmmiterT = 4.0f;
+	_pTimer = _pEmmiterT = cCloudPEmitterSlow;
+	_cTimer = _cEmmiterT = cCloudCEmitterSlow;
+	_color = cCloudBaseColor;
 }
 
 //---------------------------------
@@ -181,6 +188,22 @@ void DClouds::trigger(int key)
 }
 
 //---------------------------------
+void DClouds::setPEmmiterT(float t)
+{
+	_pEmmiterT = t;
+}
+
+void DClouds::setCEmmiterT(float t)
+{
+	_cEmmiterT = t;
+}
+
+void DClouds::setColorR(float r)
+{
+	_color.r = r;
+}
+
+//---------------------------------
 void DClouds::loadClouds()
 {
 	for (int i = 0; i < cCloudImgNum; i++)
@@ -193,7 +216,7 @@ void DClouds::loadClouds()
 void DClouds::addPartical()
 {
 	cloudUnit newCloudUnit;
-	newCloudUnit.set();
+	newCloudUnit.set(_color);
 	_cloudPartical.push_back(newCloudUnit);
 
 }

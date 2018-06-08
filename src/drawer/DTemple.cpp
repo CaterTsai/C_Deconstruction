@@ -87,7 +87,7 @@ void DTemple::draw()
 {
 	CHECK_START();
 
-	////Debug
+	//Debug
 	//for (auto& iter : _lightMgr)
 	//{
 	//	ofSetColor(iter._light.getDiffuseColor());
@@ -100,7 +100,7 @@ void DTemple::draw()
 		if (iter._isOn)
 		{
 			iter._light.enable();
-		}		
+		}
 	}
 	{
 		for (auto& iter : _pillarMgr)
@@ -128,6 +128,7 @@ void DTemple::draw()
 void DTemple::start()
 {
 	_isStart = true;
+	_color.set(cTempleLightBaseColor);
 	initLight();
 	ofEnableDepthTest();
 }
@@ -144,17 +145,22 @@ void DTemple::trigger(int key)
 {
 	if (key >= 0 && key <= 7)
 	{
-		_lightMgr[key].toggle(5.0f, ofColor(0, 100, 255));
+		_lightMgr[key].toggle(5.0f, _color);
 		_lightMgr[key].startMove(3.0f, ofVec3f(0, 0, _lightMgr[key]._light.getPosition().z), ofVec3f(0, -1500, _lightMgr[key]._light.getPosition().z));
 	}
-	else if (key == ' ')
-	{
-		ofColor c = _lightMgr[0]._light.getDiffuseColor();
-		float h = c.getHueAngle() + ofRandom(30, 60);
-		c.setHueAngle(h);
-		_lightMgr[0].lightTo(5.0f, c);
-	}
+}
 
+//----------------------------------
+void DTemple::setColorG(int g)
+{
+	_color.g = g;
+
+	for (auto& iter : _lightMgr) {
+		if (iter._isOn)
+		{
+			iter._light.setDiffuseColor(_color);
+		}
+	}
 }
 
 //----------------------------------
@@ -163,8 +169,9 @@ void DTemple::loadPillar()
 	_pillar.loadModel("OldColumn/OldColumn.obj", 20);
 	_pillar.setPosition(0, 0, 0);
 	_pillar.setScale(1.5, 1.5, 1.5);
+
 	auto& helper = _pillar.getMeshHelper(0);
-	helper.material.setShininess(20);
+	helper.material.setShininess(0);
 	helper.material.setAmbientColor(ofColor(20, 0, 0));
 
 	ofVec3f startPos(0, 0, 0);
@@ -172,8 +179,8 @@ void DTemple::loadPillar()
 	{
 		ofVec3f leftPos, rightPos;
 		leftPos = rightPos = startPos;
-		leftPos.x -= 500;
-		rightPos.x += 500;
+		leftPos.x -= 400;
+		rightPos.x += 400;
 		_pillarMgr.push_back(leftPos);
 		_pillarMgr.push_back(rightPos);
 
@@ -186,10 +193,10 @@ void DTemple::initLight()
 {
 	ofSetSmoothLighting(true);
 
-	ofVec3f startPos(0, 0, 0);
+	ofVec3f startPos(0, 0, 100);
 	for (int i = 0; i < cTemplePillarRowNum; i++)
 	{
-		ofVec3f pos = startPos;		
+		ofVec3f pos = startPos;
 
 		_lightMgr[i]._light.setDiffuseColor(ofColor(0));
 		_lightMgr[i]._light.setPosition(pos);

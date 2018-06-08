@@ -10,7 +10,9 @@ private:
 	class verticalUnit
 	{
 	public:
-		verticalUnit():_startChange(false)
+		verticalUnit():
+			_isMove(true),
+			_startChange(false)
 		{};
 		verticalUnit(int x);
 

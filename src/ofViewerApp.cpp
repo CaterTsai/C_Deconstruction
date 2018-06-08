@@ -50,7 +50,7 @@ void ofViewerApp::draw()
 	{
 		ofDrawBitmapStringHighlight("Scence :" + _scenceMgr[_nowScence]->getSceneName(), ofVec2f(0, 65));
 		//Debug
-		//camCtrl::GetInstance()->displayPos(ofVec2f(0, 45));
+		camCtrl::GetInstance()->displayPos(ofVec2f(0, 45));
 		_scenceMgr[_nowScence]->drawMsg(ofVec2f(0, 110));
 	}
 
@@ -252,7 +252,7 @@ void ofViewerApp::initScene()
 	_scenceMgr.push_back(ofPtr<SM04>(new SM04()));
 	_scenceMgr.push_back(ofPtr<SEncore>(new SEncore()));
 
-	_nowScence = eSB02;
+	_nowScence = eSC04;
 }
 
 //----------------------------------
